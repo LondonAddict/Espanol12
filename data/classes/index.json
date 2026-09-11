@@ -1,0 +1,14 @@
+[
+  { "id": "class-01", "number": 1, "title": "Greetings & Introductions", "theme": "Greetings, introductions, where you're from, saying goodbye", "available": true },
+  { "id": "class-02", "number": 2, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-03", "number": 3, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-04", "number": 4, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-05", "number": 5, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-06", "number": 6, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-07", "number": 7, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-08", "number": 8, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-09", "number": 9, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-10", "number": 10, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-11", "number": 11, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-12", "number": 12, "title": "Coming soon", "theme": "", "available": false }
+]

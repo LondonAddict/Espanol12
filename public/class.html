@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Español12</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand"><a href="/">Español<span>12</span></a></div>
+    <div id="class-heading"></div>
+  </header>
+  <main id="class-main">
+    <p>Loading class...</p>
+  </main>
+
+  <template id="class-content-template">
+    <section>
+      <h1 id="class-title"></h1>
+      <p id="class-theme"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Vocabulary &amp; Phrases</h2>
+      <ul class="vocab-list" id="vocab-list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Flashcards</h2>
+      <div id="flashcard-container" class="flashcard-wrap"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Quiz</h2>
+      <div id="quiz-container"></div>
+    </section>
+
+    <section class="panel">
+      <h2>AI Speaking Practice</h2>
+      <p>
+        Have a short spoken (or typed) conversation with an AI partner who only uses the
+        phrases from this class. Start whenever you're ready.
+      </p>
+      <div id="speaking-practice-container"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Listening Practice</h2>
+      <p>Hear native speakers use this class's key phrases in real YouTube clips, powered by YouGlish.</p>
+      <div id="youglish-container"></div>
+    </section>
+
+    <nav class="class-nav">
+      <a id="prev-class-link" href="/">&larr; Home</a>
+      <a id="next-class-link" href="/">Next class &rarr;</a>
+    </nav>
+  </template>
+
+  <script src="/js/flashcards.js"></script>
+  <script src="/js/quiz.js"></script>
+  <script src="/js/speaking-practice.js"></script>
+  <script src="/js/youglish.js"></script>
+  <script src="/js/class-page.js"></script>
+</body>
+</html>

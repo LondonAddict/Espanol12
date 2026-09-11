@@ -1,0 +1,73 @@
+{
+  "id": "class-01",
+  "number": 1,
+  "title": "Greetings & Introductions",
+  "theme": "Greetings, introductions, where you're from, saying goodbye",
+  "vocab": [
+    { "es": "Hola", "en": "Hello" },
+    { "es": "Buenos días", "en": "Good morning" },
+    { "es": "Buenas tardes", "en": "Good afternoon" },
+    { "es": "Buenas noches", "en": "Good evening / good night" },
+    { "es": "¿Qué tal?", "en": "How's it going?" },
+    { "es": "¿Cómo estás?", "en": "How are you?" },
+    { "es": "¿Cómo te llamas?", "en": "What's your name?" },
+    { "es": "Soy Victoria", "en": "I'm Victoria" },
+    { "es": "¿Puedes repetir, por favor?", "en": "Can you repeat that, please?" },
+    { "es": "¿De dónde eres?", "en": "Where are you from?" },
+    { "es": "Soy de Irlanda", "en": "I'm from Ireland" },
+    { "es": "Soy de Irlanda también", "en": "I'm from Ireland too" },
+    { "es": "Qué bien", "en": "That's great / how nice" },
+    { "es": "Bueno, nos vemos", "en": "Well, see you around" },
+    { "es": "Adiós", "en": "Goodbye" },
+    { "es": "Hasta luego", "en": "See you later" },
+    { "es": "Encantada", "en": "Nice to meet you (a woman speaking)" },
+    { "es": "Encantado", "en": "Nice to meet you (a man speaking)" },
+    { "es": "Mucho gusto", "en": "Nice to meet you / pleasure" }
+  ],
+  "phraseBank": [
+    "Hola",
+    "Buenos días",
+    "Buenas tardes",
+    "Buenas noches",
+    "¿Qué tal?",
+    "¿Cómo estás?",
+    "¿Cómo te llamas?",
+    "Soy Victoria",
+    "¿Puedes repetir, por favor?",
+    "¿De dónde eres?",
+    "Soy de Irlanda",
+    "Soy de Irlanda también",
+    "Qué bien",
+    "Bueno, nos vemos",
+    "Adiós",
+    "Hasta luego",
+    "Encantada",
+    "Encantado",
+    "Mucho gusto"
+  ],
+  "quiz": [
+    { "question": "How do you say 'Hello' in Spanish?", "choices": ["Hola", "Adiós", "Gracias", "Bueno"], "answer": "Hola" },
+    { "question": "What does '¿Cómo te llamas?' mean?", "choices": ["How are you?", "What's your name?", "Where are you from?", "See you later"], "answer": "What's your name?" },
+    { "question": "How would you say 'I'm from Ireland'?", "choices": ["Soy de Irlanda", "¿De dónde eres?", "Soy Victoria", "Mucho gusto"], "answer": "Soy de Irlanda" },
+    { "question": "What does '¿De dónde eres?' mean?", "choices": ["What's your name?", "How's it going?", "Where are you from?", "Can you repeat, please?"], "answer": "Where are you from?" },
+    { "question": "Which phrase means 'Good afternoon'?", "choices": ["Buenos días", "Buenas tardes", "Buenas noches", "Qué bien"], "answer": "Buenas tardes" },
+    { "question": "How do you politely ask someone to repeat something?", "choices": ["¿Qué tal?", "¿Puedes repetir, por favor?", "Bueno, nos vemos", "Hasta luego"], "answer": "¿Puedes repetir, por favor?" },
+    { "question": "A man introducing himself for the first time would say...", "choices": ["Encantada", "Encantado", "Adiós", "Qué bien"], "answer": "Encantado" },
+    { "question": "Which of these means 'See you later'?", "choices": ["Hasta luego", "Buenas noches", "Soy Victoria", "¿Cómo estás?"], "answer": "Hasta luego" },
+    { "question": "What does 'Qué bien' express?", "choices": ["That's great / how nice", "Goodbye", "My name is...", "Please repeat that"], "answer": "That's great / how nice" },
+    { "question": "How do you say 'Nice to meet you' as a general phrase?", "choices": ["Mucho gusto", "Buenas noches", "¿Qué tal?", "Bueno, nos vemos"], "answer": "Mucho gusto" }
+  ],
+  "youglishTerms": ["hola", "cómo te llamas", "de dónde eres", "mucho gusto"],
+  "speakingPractice": {
+    "scenario": "You are a friendly stranger meeting the student for the first time at a casual social event.",
+    "goalOrder": [
+      "Greet the student",
+      "Ask how they are doing",
+      "Ask the student's name",
+      "Ask where the student is from",
+      "React warmly and share that you are also from Ireland (or wherever fits) if it comes up",
+      "Say it was nice to meet them and close the conversation"
+    ],
+    "openingLine": "¡Hola! ¿Qué tal?"
+  }
+}
