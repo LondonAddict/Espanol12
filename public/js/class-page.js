@@ -44,30 +44,40 @@ async function initClassPage() {
   mountSpeakingPractice(document.getElementById('speaking-practice-container'), classData);
   mountYouglish(document.getElementById('youglish-container'), classData.youglishTerms);
 
+  setupSectionMenuScrollSpy();
   await setupClassNav(classData.number);
 }
 
-function renderTopClassMenu(classes, currentNumber) {
-  const menu = document.getElementById('top-class-menu');
-  if (!menu) return;
+function setupSectionMenuScrollSpy() {
+  const menu = document.getElementById('section-menu');
+  if (!menu || !('IntersectionObserver' in window)) return;
 
-  menu.innerHTML = classes
-    .map((c) => {
-      const isCurrent = c.number === currentNumber;
-      if (!c.available) {
-        return `<span class="top-class-menu-item locked" title="Coming soon">${c.number}</span>`;
-      }
-      return `<a class="top-class-menu-item${isCurrent ? ' current' : ''}" href="/class/${c.id}">${c.number}</a>`;
-    })
-    .join('');
+  const links = Array.from(menu.querySelectorAll('a'));
+  const sections = links
+    .map((link) => document.getElementById(link.getAttribute('href').slice(1)))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const link = menu.querySelector(`a[href="#${entry.target.id}"]`);
+        if (link) {
+          links.forEach((l) => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    },
+    { rootMargin: '-40% 0px -50% 0px' }
+  );
+
+  sections.forEach((section) => observer.observe(section));
 }
 
 async function setupClassNav(currentNumber) {
   try {
     const res = await fetch('/api/classes');
     const classes = await res.json();
-
-    renderTopClassMenu(classes, currentNumber);
 
     const prev = classes.find((c) => c.number === currentNumber - 1 && c.available);
     const next = classes.find((c) => c.number === currentNumber + 1 && c.available);

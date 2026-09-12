@@ -45,42 +45,38 @@ header.site-header .brand span {
   color: var(--color-accent);
 }
 
-nav.top-class-menu {
+html { scroll-behavior: smooth; }
+
+nav.section-menu {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
-  padding: 0.5rem 1.5rem;
+  padding: 0.6rem 1.5rem;
   display: flex;
-  gap: 0.4rem;
+  gap: 1.25rem;
   overflow-x: auto;
 }
 
-.top-class-menu-item {
+nav.section-menu a {
   flex: 0 0 auto;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: 0.85rem;
-  font-weight: 600;
-  background: var(--color-bg);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-}
-
-.top-class-menu-item:hover { text-decoration: none; background: #f3e9dd; }
-
-.top-class-menu-item.current {
-  background: var(--color-primary);
-  color: #fff;
-  border-color: var(--color-primary);
-}
-
-.top-class-menu-item.locked {
   color: var(--color-muted);
-  opacity: 0.5;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
 }
+
+nav.section-menu a:hover { text-decoration: none; color: var(--color-primary-dark); }
+
+nav.section-menu a.active {
+  color: var(--color-primary-dark);
+  border-bottom-color: var(--color-primary);
+}
+
+section.panel { scroll-margin-top: 4.5rem; }
 
 main {
   max-width: 960px;
