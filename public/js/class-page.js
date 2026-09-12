@@ -47,10 +47,28 @@ async function initClassPage() {
   await setupClassNav(classData.number);
 }
 
+function renderTopClassMenu(classes, currentNumber) {
+  const menu = document.getElementById('top-class-menu');
+  if (!menu) return;
+
+  menu.innerHTML = classes
+    .map((c) => {
+      const isCurrent = c.number === currentNumber;
+      if (!c.available) {
+        return `<span class="top-class-menu-item locked" title="Coming soon">${c.number}</span>`;
+      }
+      return `<a class="top-class-menu-item${isCurrent ? ' current' : ''}" href="/class/${c.id}">${c.number}</a>`;
+    })
+    .join('');
+}
+
 async function setupClassNav(currentNumber) {
   try {
     const res = await fetch('/api/classes');
     const classes = await res.json();
+
+    renderTopClassMenu(classes, currentNumber);
+
     const prev = classes.find((c) => c.number === currentNumber - 1 && c.available);
     const next = classes.find((c) => c.number === currentNumber + 1 && c.available);
 

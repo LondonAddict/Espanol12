@@ -8,6 +8,7 @@ function mountSpeakingPractice(container, classData) {
     <div class="chat-window" id="chat-window"></div>
     <div class="chat-input-row">
       <input type="text" id="chat-input" placeholder="Type your reply in Spanish..." disabled />
+      <button class="secondary" id="chat-mic" disabled title="Speak your reply" hidden>🎤</button>
       <button id="chat-send" disabled>Send</button>
     </div>
     <div class="chat-controls">
@@ -19,6 +20,7 @@ function mountSpeakingPractice(container, classData) {
   const windowEl = container.querySelector('#chat-window');
   const input = container.querySelector('#chat-input');
   const sendBtn = container.querySelector('#chat-send');
+  const micBtn = container.querySelector('#chat-mic');
   const startBtn = container.querySelector('#chat-start');
   const endBtn = container.querySelector('#chat-end');
 
@@ -37,6 +39,7 @@ function mountSpeakingPractice(container, classData) {
     active = isActive;
     input.disabled = !isActive;
     sendBtn.disabled = !isActive;
+    micBtn.disabled = !isActive;
     startBtn.disabled = isActive;
     endBtn.disabled = !isActive;
   }
@@ -109,5 +112,64 @@ function mountSpeakingPractice(container, classData) {
   sendBtn.addEventListener('click', sendMessage);
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') sendMessage();
+  });
+
+  setupVoiceInput(micBtn, input, sendMessage);
+}
+
+/**
+ * Wires a microphone button to the browser's Web Speech API so students
+ * can speak their reply instead of typing it. Hidden entirely in
+ * browsers that don't support SpeechRecognition (e.g. Firefox, Safari).
+ */
+function setupVoiceInput(micBtn, input, sendMessage) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    return; // stays hidden
+  }
+
+  const recognition = new SpeechRecognition();
+  recognition.lang = 'es-ES';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  let listening = false;
+
+  micBtn.hidden = false;
+
+  recognition.addEventListener('result', (event) => {
+    const transcript = event.results[0][0].transcript;
+    input.value = transcript;
+    sendMessage();
+  });
+
+  recognition.addEventListener('end', () => {
+    listening = false;
+    micBtn.classList.remove('active');
+    micBtn.textContent = '🎤';
+  });
+
+  recognition.addEventListener('error', () => {
+    listening = false;
+    micBtn.classList.remove('active');
+    micBtn.textContent = '🎤';
+  });
+
+  micBtn.addEventListener('click', () => {
+    if (micBtn.disabled) return;
+    if (listening) {
+      recognition.stop();
+      return;
+    }
+    listening = true;
+    micBtn.classList.add('active');
+    micBtn.textContent = '⏹';
+    try {
+      recognition.start();
+    } catch (err) {
+      listening = false;
+      micBtn.classList.remove('active');
+      micBtn.textContent = '🎤';
+    }
   });
 }
