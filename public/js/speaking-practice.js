@@ -10,7 +10,7 @@ function mountSpeakingPractice(container, classData) {
     <div class="chat-window" id="chat-window"></div>
     <div class="chat-input-row">
       <input type="text" id="chat-input" placeholder="Type your reply in Spanish..." disabled />
-      <button class="secondary" id="chat-mic" disabled title="Speak your reply" hidden>🎤</button>
+      <button class="secondary" id="chat-mic" disabled title="Tap to speak, tap again when done" hidden>🎤</button>
       <button id="chat-send" disabled>Send</button>
     </div>
     <div class="chat-controls">
@@ -163,46 +163,76 @@ function setupVoiceInput(micBtn, input, sendMessage) {
 
   const recognition = new SpeechRecognition();
   recognition.lang = 'es-ES';
-  recognition.interimResults = false;
+  recognition.continuous = true; // don't auto-stop on a mid-sentence pause
+  recognition.interimResults = true; // show live transcript while speaking
   recognition.maxAlternatives = 1;
 
   let listening = false;
+  let stoppedManually = false;
+  let finalTranscript = '';
 
   micBtn.hidden = false;
 
-  recognition.addEventListener('result', (event) => {
-    const transcript = event.results[0][0].transcript;
-    input.value = transcript;
-    sendMessage();
-  });
-
-  recognition.addEventListener('end', () => {
+  function resetButton() {
     listening = false;
     micBtn.classList.remove('active');
     micBtn.textContent = '🎤';
+    micBtn.title = 'Speak your reply';
+  }
+
+  recognition.addEventListener('result', (event) => {
+    let interim = '';
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      const result = event.results[i];
+      if (result.isFinal) {
+        finalTranscript += (finalTranscript ? ' ' : '') + result[0].transcript.trim();
+      } else {
+        interim += result[0].transcript;
+      }
+    }
+    input.value = (finalTranscript + ' ' + interim).trim();
+  });
+
+  // Fires when recognition actually stops - either because the student
+  // clicked the button again (stoppedManually) or the browser gave up on
+  // its own (e.g. long silence). Only send the message on manual stop, so
+  // a normal mid-sentence pause never cuts the student off.
+  recognition.addEventListener('end', () => {
+    resetButton();
+    const text = finalTranscript.trim() || input.value.trim();
+    finalTranscript = '';
+    if (stoppedManually && text) {
+      input.value = text;
+      sendMessage();
+    }
+    stoppedManually = false;
   });
 
   recognition.addEventListener('error', () => {
-    listening = false;
-    micBtn.classList.remove('active');
-    micBtn.textContent = '🎤';
+    resetButton();
+    finalTranscript = '';
+    stoppedManually = false;
   });
 
   micBtn.addEventListener('click', () => {
     if (micBtn.disabled) return;
     if (listening) {
-      recognition.stop();
+      stoppedManually = true;
+      micBtn.textContent = '…';
+      recognition.stop(); // triggers 'end', which sends the accumulated text
       return;
     }
     listening = true;
+    stoppedManually = false;
+    finalTranscript = '';
+    input.value = '';
     micBtn.classList.add('active');
     micBtn.textContent = '⏹';
+    micBtn.title = 'Tap again when you’re done speaking';
     try {
       recognition.start();
     } catch (err) {
-      listening = false;
-      micBtn.classList.remove('active');
-      micBtn.textContent = '🎤';
+      resetButton();
     }
   });
 }
