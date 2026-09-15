@@ -4,6 +4,8 @@
  * class's phrase bank so the AI only ever produces those phrases.
  */
 function mountSpeakingPractice(container, classData) {
+  const speechSupported = typeof isSpeechSynthesisSupported === 'function' && isSpeechSynthesisSupported();
+
   container.innerHTML = `
     <div class="chat-window" id="chat-window"></div>
     <div class="chat-input-row">
@@ -14,6 +16,7 @@ function mountSpeakingPractice(container, classData) {
     <div class="chat-controls">
       <button id="chat-start">Start Conversation</button>
       <button class="secondary" id="chat-end" disabled>End Conversation</button>
+      ${speechSupported ? '<button class="secondary" id="chat-autospeak" aria-pressed="true">🔊 Auto-speak: On</button>' : ''}
     </div>
   `;
 
@@ -23,14 +26,44 @@ function mountSpeakingPractice(container, classData) {
   const micBtn = container.querySelector('#chat-mic');
   const startBtn = container.querySelector('#chat-start');
   const endBtn = container.querySelector('#chat-end');
+  const autospeakBtn = container.querySelector('#chat-autospeak');
 
   let history = [];
   let active = false;
+  let autospeak = true;
+
+  if (autospeakBtn) {
+    autospeakBtn.addEventListener('click', () => {
+      autospeak = !autospeak;
+      autospeakBtn.setAttribute('aria-pressed', String(autospeak));
+      autospeakBtn.textContent = autospeak ? '🔊 Auto-speak: On' : '🔇 Auto-speak: Off';
+      if (!autospeak) window.speechSynthesis.cancel();
+    });
+  }
 
   function addBubble(role, text) {
     const bubble = document.createElement('div');
     bubble.className = `chat-bubble ${role}`;
-    bubble.textContent = text;
+
+    if (role === 'ai' && speechSupported) {
+      const textSpan = document.createElement('span');
+      textSpan.textContent = text;
+      bubble.appendChild(textSpan);
+
+      const speakBtn = document.createElement('button');
+      speakBtn.className = 'speak-btn';
+      speakBtn.type = 'button';
+      speakBtn.title = 'Listen';
+      speakBtn.setAttribute('aria-label', 'Listen to this reply');
+      speakBtn.textContent = '🔊';
+      speakBtn.addEventListener('click', () => speakSpanish(text));
+      bubble.appendChild(speakBtn);
+
+      if (autospeak) speakSpanish(text);
+    } else {
+      bubble.textContent = text;
+    }
+
     windowEl.appendChild(bubble);
     windowEl.scrollTop = windowEl.scrollHeight;
   }
