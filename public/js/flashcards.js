@@ -13,9 +13,12 @@ function mountFlashcards(container, vocab) {
   let flipped = false;
   let direction = 'es-en'; // 'es-en' shows Spanish first, 'en-es' shows English first
 
+  const speechSupported = typeof isSpeechSynthesisSupported === 'function' && isSpeechSynthesisSupported();
+
   container.innerHTML = `
     <div class="flashcard-controls" style="margin-bottom: 0.75rem;">
       <button class="secondary" id="fc-direction"></button>
+      ${speechSupported ? '<button class="secondary" id="fc-speak">🔊 Listen</button>' : ''}
     </div>
     <div class="flashcard" id="fc-card">
       <div class="flashcard-inner">
@@ -37,6 +40,7 @@ function mountFlashcards(container, vocab) {
   const prevBtn = container.querySelector('#fc-prev');
   const nextBtn = container.querySelector('#fc-next');
   const directionBtn = container.querySelector('#fc-direction');
+  const speakBtn = container.querySelector('#fc-speak');
 
   function render() {
     const item = vocab[index];
@@ -71,6 +75,10 @@ function mountFlashcards(container, vocab) {
     flipped = false;
     render();
   });
+
+  if (speakBtn) {
+    speakBtn.addEventListener('click', () => speakSpanish(vocab[index].es));
+  }
 
   render();
 }

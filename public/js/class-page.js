@@ -35,9 +35,26 @@ async function initClassPage() {
   document.getElementById('class-theme').textContent = classData.theme || '';
 
   const vocabList = document.getElementById('vocab-list');
+  const speechSupported = isSpeechSynthesisSupported();
   vocabList.innerHTML = (classData.vocab || [])
-    .map((v) => `<li><span class="es">${escapeHtmlLocal(v.es)}</span><span class="en">${escapeHtmlLocal(v.en)}</span></li>`)
+    .map(
+      (v) => `
+      <li>
+        <span class="vocab-es-group">
+          <span class="es">${escapeHtmlLocal(v.es)}</span>
+          ${speechSupported ? `<button class="speak-btn" data-text="${escapeAttrLocal(v.es)}" title="Listen" aria-label="Listen to pronunciation">🔊</button>` : ''}
+        </span>
+        <span class="en">${escapeHtmlLocal(v.en)}</span>
+      </li>
+    `
+    )
     .join('');
+
+  if (speechSupported) {
+    vocabList.querySelectorAll('.speak-btn').forEach((btn) => {
+      btn.addEventListener('click', () => speakSpanish(btn.dataset.text));
+    });
+  }
 
   mountFlashcards(document.getElementById('flashcard-container'), classData.vocab);
   mountQuiz(document.getElementById('quiz-container'), classData.quiz);
@@ -113,6 +130,10 @@ function escapeHtmlLocal(str) {
   const div = document.createElement('div');
   div.textContent = str || '';
   return div.innerHTML;
+}
+
+function escapeAttrLocal(str) {
+  return String(str || '').replace(/"/g, '&quot;');
 }
 
 initClassPage();
