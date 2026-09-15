@@ -22,7 +22,7 @@ app.get('/api/health', (req, res) => {
     ok: true,
     anthropicKeyConfigured: Boolean(process.env.ANTHROPIC_API_KEY),
     aiProvider: process.env.AI_PROVIDER || null,
-    model: process.env.ANTHROPIC_MODEL || 'claude-3-5-haiku-20241022 (default)',
+    model: process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5 (default)',
     deployedAt: new Date().toISOString(),
   });
 });

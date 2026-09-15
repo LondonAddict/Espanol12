@@ -4,7 +4,7 @@ const { getClassData } = require('../data');
 
 const router = express.Router();
 
-const MODEL = process.env.ANTHROPIC_MODEL || 'claude-3-5-haiku-20241022';
+const MODEL = process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5';
 const MAX_HISTORY_TURNS = 20;
 
 let anthropicClient = null;
@@ -90,8 +90,26 @@ router.post('/', async (req, res) => {
 
     res.json({ reply });
   } catch (err) {
-    console.error('AI chat error:', err.message);
-    res.status(502).json({ error: 'The AI conversation partner is unavailable right now. Please try again.' });
+    let detail = 'unavailable right now';
+    if (err instanceof Anthropic.NotFoundError) {
+      console.error('AI chat error - model not found:', MODEL, err.message);
+      detail = 'misconfigured (the configured model ID was not found - check ANTHROPIC_MODEL)';
+    } else if (err instanceof Anthropic.AuthenticationError) {
+      console.error('AI chat error - authentication failed:', err.message);
+      detail = 'misconfigured (the API key was rejected - check ANTHROPIC_API_KEY)';
+    } else if (err instanceof Anthropic.PermissionDeniedError) {
+      console.error('AI chat error - permission denied:', err.message);
+      detail = 'misconfigured (the API key does not have access to this model)';
+    } else if (err instanceof Anthropic.RateLimitError) {
+      console.error('AI chat error - rate limited:', err.message);
+      detail = 'busy right now - please try again in a moment';
+    } else if (err instanceof Anthropic.APIError) {
+      console.error('AI chat error:', err.status, err.type, err.message);
+      detail = `unavailable right now (${err.type || err.status})`;
+    } else {
+      console.error('AI chat error:', err.message);
+    }
+    res.status(502).json({ error: `The AI conversation partner is ${detail}.` });
   }
 });
 
