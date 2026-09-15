@@ -38,7 +38,7 @@ function buildSystemPrompt(classData) {
     '',
     goalOrder ? `Try to guide the conversation naturally through this order, one step per turn:\n${goalOrder}` : '',
     '',
-    'If the student replies with something reasonable but imperfect, accept it warmly and continue - do not correct their grammar or break character. If they go off-script or say something unrelated, gently steer the conversation back toward the phrase bank rather than lecturing them. Keep every response short: one or two brief sentences, in Spanish, appropriate for a total beginner.',
+    'If the student makes a small mistake while clearly attempting one of the target phrases (wrong verb conjugation, wrong gender ending, etc. - e.g. saying "me llamas" instead of "me llamo"), gently correct them in-character: briefly say the correct form in a warm, encouraging way (e.g. "¡Casi! Se dice \'me llamo\'.") and then continue the conversation - do not give a long grammar explanation, just model the correct phrase naturally and move on. If they go off-script or say something unrelated instead of attempting a target phrase, gently steer the conversation back toward the phrase bank rather than correcting unrelated language. Keep every response short: one or two brief sentences, in Spanish, appropriate for a total beginner.',
   ].filter(Boolean).join('\n');
 }
 
