@@ -169,7 +169,10 @@ function setupVoiceInput(micBtn, input, sendMessage) {
 
   let listening = false;
   let stoppedManually = false;
-  let finalTranscript = '';
+  // Keyed by result index rather than appended, because some browsers
+  // (notably Android Chrome) can re-fire the same index as "final" more
+  // than once in continuous mode - concatenating blindly duplicated words.
+  let finalSegments = [];
 
   micBtn.hidden = false;
 
@@ -180,17 +183,23 @@ function setupVoiceInput(micBtn, input, sendMessage) {
     micBtn.title = 'Speak your reply';
   }
 
+  function currentFinalText() {
+    return finalSegments.filter(Boolean).join(' ');
+  }
+
   recognition.addEventListener('result', (event) => {
     let interim = '';
-    for (let i = event.resultIndex; i < event.results.length; i++) {
+    // Rebuild from index 0 every time (not just from event.resultIndex) so
+    // a re-finalized index overwrites its slot instead of adding a new one.
+    for (let i = 0; i < event.results.length; i++) {
       const result = event.results[i];
       if (result.isFinal) {
-        finalTranscript += (finalTranscript ? ' ' : '') + result[0].transcript.trim();
+        finalSegments[i] = result[0].transcript.trim();
       } else {
         interim += result[0].transcript;
       }
     }
-    input.value = (finalTranscript + ' ' + interim).trim();
+    input.value = (currentFinalText() + ' ' + interim).trim();
   });
 
   // Fires when recognition actually stops - either because the student
@@ -199,8 +208,8 @@ function setupVoiceInput(micBtn, input, sendMessage) {
   // a normal mid-sentence pause never cuts the student off.
   recognition.addEventListener('end', () => {
     resetButton();
-    const text = finalTranscript.trim() || input.value.trim();
-    finalTranscript = '';
+    const text = currentFinalText() || input.value.trim();
+    finalSegments = [];
     if (stoppedManually && text) {
       input.value = text;
       sendMessage();
@@ -210,7 +219,7 @@ function setupVoiceInput(micBtn, input, sendMessage) {
 
   recognition.addEventListener('error', () => {
     resetButton();
-    finalTranscript = '';
+    finalSegments = [];
     stoppedManually = false;
   });
 
@@ -224,7 +233,7 @@ function setupVoiceInput(micBtn, input, sendMessage) {
     }
     listening = true;
     stoppedManually = false;
-    finalTranscript = '';
+    finalSegments = [];
     input.value = '';
     micBtn.classList.add('active');
     micBtn.textContent = '⏹';
