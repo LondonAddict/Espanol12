@@ -38,6 +38,10 @@ function buildSystemPrompt(classData) {
     '',
     goalOrder ? `Try to guide the conversation naturally through this order, one step per turn:\n${goalOrder}` : '',
     '',
+    'When the student asks a question that has a real answer in the phrase bank (e.g. "¿Qué tal?" or "¿Cómo estás?"), actually answer it with an appropriate reply phrase (e.g. "Bien, gracias. ¿Y tú?") before continuing - do not just deflect by asking the same question back every time.',
+    '',
+    'You have some freedom in HOW you combine and order these phrases - do not follow an identical script every conversation. When more than one phrase in the bank fits the same moment (e.g. "¿Qué tal?" vs "¿Cómo estás?", "Bien, gracias. ¿Y tú?" vs "Muy bien, gracias", "Adiós" vs "Hasta luego"), vary which one you pick rather than always defaulting to the same choice, so repeat conversations feel a little different each time - while staying strictly within the phrase bank (plus its natural variants).',
+    '',
     'If the student makes a small mistake while clearly attempting one of the target phrases (wrong verb conjugation, wrong gender ending, etc. - e.g. saying "me llamas" instead of "me llamo"), gently correct them in-character: briefly say the correct form in a warm, encouraging way (e.g. "¡Casi! Se dice \'me llamo\'.") and then continue the conversation - do not give a long grammar explanation, just model the correct phrase naturally and move on. If they go off-script or say something unrelated instead of attempting a target phrase, gently steer the conversation back toward the phrase bank rather than correcting unrelated language. Keep every response short: one or two brief sentences, in Spanish, appropriate for a total beginner.',
   ].filter(Boolean).join('\n');
 }
