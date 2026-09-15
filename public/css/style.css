@@ -155,6 +155,16 @@ button.speak-btn {
 }
 button.speak-btn:hover { background: none; color: var(--color-primary-dark); }
 
+.youglish-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  opacity: 0.85;
+}
+.youglish-link:hover { opacity: 1; text-decoration: none; }
+
 /* Flashcards */
 .flashcard-wrap {
   display: flex;
@@ -292,13 +302,6 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 #chat-mic.active { background: var(--color-primary); color: #fff; }
 
 .chat-controls { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
-
-/* YouGlish */
-.youglish-terms { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
-.youglish-terms button.active { background: var(--color-accent); }
-#youglish-widget-container { min-height: 320px; }
-.youglish-placeholder { color: var(--color-muted); }
-.youglish-attribution { margin-top: 0.5rem; font-size: 0.8rem; color: var(--color-muted); }
 
 .locked-notice {
   background: var(--color-surface);

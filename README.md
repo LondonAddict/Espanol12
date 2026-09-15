@@ -6,9 +6,10 @@ A 12-class beginner Spanish conversation site. Each class page has:
 - **Flashcards** (flip to reveal the translation)
 - **Quiz** (multiple choice)
 - **AI Speaking Practice** — a chat-style back-and-forth with an AI partner that is
-  restricted to that class's exact phrase bank
-- **Listening Practice** — an embedded [YouGlish](https://youglish.com) widget showing
-  native speakers using the class's key phrases in real YouTube clips
+  restricted to that class's exact phrase bank, with voice input and spoken replies
+- **Pronunciation** — a 🔊 listen button (browser text-to-speech) on every vocab entry
+  and on the flashcard deck, plus a 🎬 link on each vocab entry out to
+  [YouGlish](https://youglish.com) to hear real native speakers say it
 
 Class 1 (Greetings & Introductions) is fully built out. Classes 2–12 are scaffolded as
 "coming soon" placeholders — see **Adding a new class** below.
@@ -17,10 +18,10 @@ Class 1 (Greetings & Introductions) is fully built out. Classes 2–12 are scaff
 
 ```
 data/classes/index.json      List of all 12 classes (id, number, title, theme, available)
-data/classes/class-01.json   Class 1 content: vocab, phrase bank, quiz, speaking-practice
-                              scenario, YouGlish search terms
+data/classes/class-01.json   Class 1 content: vocab (with per-word YouGlish links),
+                              phrase bank, quiz, speaking-practice scenario
 server/                      Express app (serves the site + the AI chat API)
-  index.js                   App entry point
+  index.js                   App entry point, plus GET /api/health for deploy diagnostics
   data.js                    Reads class JSON from disk
   routes/classes.js          GET /api/classes, GET /api/classes/:id
   routes/chat.js             POST /api/chat — builds the per-class system prompt and
@@ -28,10 +29,10 @@ server/                      Express app (serves the site + the AI chat API)
 public/                      Static frontend (plain HTML/CSS/JS, no build step)
   index.html, class.html     Home page and the shared class-page template
   css/style.css              Shared styles
-  js/flashcards.js           Generic flashcard engine
-  js/quiz.js                 Generic multiple-choice quiz engine
-  js/speaking-practice.js    Chat UI for AI Speaking Practice
-  js/youglish.js             YouGlish widget integration
+  js/speech.js               Browser text-to-speech helper (pronunciation playback)
+  js/flashcards.js           Generic flashcard engine (ES<->EN direction toggle)
+  js/quiz.js                 Generic multiple-choice quiz engine (one question at a time)
+  js/speaking-practice.js    Chat UI for AI Speaking Practice (voice input + spoken replies)
   js/class-page.js           Loads a class's JSON and wires up the sections above
 ```
 
@@ -62,16 +63,31 @@ chat, which will show a friendly "not configured yet" message instead of crashin
 ## Adding a new class (2–12)
 
 1. Add a `data/classes/class-XX.json` file following the shape of `class-01.json`:
-   `id`, `number`, `title`, `theme`, `vocab` (array of `{ es, en }`), `phraseBank`
-   (the exact closed list of phrases the AI is allowed to use), `quiz` (array of
-   `{ question, choices, answer }`), `youglishTerms` (2–4 key words/phrases), and
-   `speakingPractice` (`scenario`, `goalOrder`, `openingLine`).
+   `id`, `number`, `title`, `theme`, `vocab` (array of `{ es, en, youglish }` — the
+   `youglish` link is optional per entry; see below), `phraseBank` (the exact closed
+   list of phrases the AI is allowed to use), `quiz` (array of
+   `{ question, choices, answer }`), and `speakingPractice` (`scenario`, `goalOrder`,
+   `openingLine`).
 2. Update that class's entry in `data/classes/index.json`: set `title`, `theme`, and
    `available: true`.
 3. Commit and push — no frontend code changes needed.
 
 Per the task brief, classes 2–12 should each land as their own commit/PR once Viktoria
 provides that class's content.
+
+### Adding YouGlish links per vocab entry
+
+Each vocab item can carry an optional `youglish` field — a direct link to a YouGlish
+results page for that word/phrase, shown as a 🎬 icon next to the word. Two link styles:
+
+- **Curated (preferred when available):** search youglish.com/pronounce/spanish
+  yourself, pick a good clip, and copy its "getbyid" URL from the address bar, e.g.
+  `https://youglish.com/getbyid/120455/Qu%C3%A9%20tal/spanish/es`.
+- **Generic fallback:** `https://youglish.com/pronounce/<Phrase_With_Underscores>/spanish/es`
+  — take the phrase, strip punctuation (¿ ¡ ? , etc.), replace spaces with underscores,
+  keep accents and original capitalization. E.g. "¿De dónde eres?" → `De_dónde_eres`.
+
+If a vocab entry has no `youglish` field, the icon is simply omitted — it's optional.
 
 ## How AI Speaking Practice stays "closed vocabulary"
 
@@ -92,13 +108,3 @@ vocabulary list and what the AI is allowed to say.
 - **Content for Classes 2–12.** Only Class 1's phrase bank/vocab was provided. Please
   send each remaining class's material (theme + phrase list, same format as Class 1) so
   it can be added one class at a time.
-- **YouGlish widget details.** The integration in `public/js/youglish.js` follows
-  YouGlish's documented widget pattern (`youglish.com/api/doc/widget`: load
-  `widget.js`, instantiate `YG.Widget`, call `widget.fetch(term, "spanish")`), with a
-  graceful fallback link if the widget script fails to load. Live docs couldn't be
-  fetched from this environment to double check the exact current snippet — worth a
-  quick manual check against `youglish.com/api/doc/widget` before relying on it in
-  production.
-- **Voice input.** The brief calls out voice input as a stretch goal; the current
-  Speaking Practice UI is text-only (type your reply). Let us know if voice input
-  should be prioritized for a follow-up class or added now.

@@ -43,6 +43,7 @@ async function initClassPage() {
         <span class="vocab-es-group">
           <span class="es">${escapeHtmlLocal(v.es)}</span>
           ${speechSupported ? `<button class="speak-btn" data-text="${escapeAttrLocal(v.es)}" title="Listen" aria-label="Listen to pronunciation">🔊</button>` : ''}
+          ${v.youglish ? `<a class="youglish-link" href="${escapeAttrLocal(v.youglish)}" target="_blank" rel="noopener" title="Watch on YouGlish.com" aria-label="Watch native speakers say this on YouGlish">🎬</a>` : ''}
         </span>
         <span class="en">${escapeHtmlLocal(v.en)}</span>
       </li>
@@ -59,7 +60,6 @@ async function initClassPage() {
   mountFlashcards(document.getElementById('flashcard-container'), classData.vocab);
   mountQuiz(document.getElementById('quiz-container'), classData.quiz);
   mountSpeakingPractice(document.getElementById('speaking-practice-container'), classData);
-  mountYouglish(document.getElementById('youglish-container'), classData.youglishTerms);
 
   setupSectionMenuScrollSpy();
   await setupClassNav(classData.number);
