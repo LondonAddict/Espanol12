@@ -34,32 +34,27 @@ async function initClassPage() {
   document.getElementById('class-title').textContent = `Class ${classData.number}: ${classData.title}`;
   document.getElementById('class-theme').textContent = classData.theme || '';
 
-  const vocabList = document.getElementById('vocab-list');
   const speechSupported = isSpeechSynthesisSupported();
-  vocabList.innerHTML = (classData.vocab || [])
-    .map(
-      (v) => `
-      <li>
-        <span class="vocab-es-group">
-          <span class="es">${escapeHtmlLocal(v.es)}</span>
-          ${speechSupported ? `<button class="speak-btn" data-text="${escapeAttrLocal(v.es)}" title="Listen" aria-label="Listen to pronunciation">🔊</button>` : ''}
-          ${v.youglish ? `<a class="youglish-link" href="${escapeAttrLocal(v.youglish)}" target="_blank" rel="noopener" title="Watch on YouGlish.com" aria-label="Watch native speakers say this on YouGlish">🎬</a>` : ''}
-        </span>
-        <span class="en">${escapeHtmlLocal(v.en)}</span>
-      </li>
-    `
-    )
-    .join('');
+  renderVocabList(document.getElementById('vocab-list'), classData.vocab, speechSupported);
 
-  if (speechSupported) {
-    vocabList.querySelectorAll('.speak-btn').forEach((btn) => {
-      btn.addEventListener('click', () => speakSpanish(btn.dataset.text));
-    });
+  const passiveBlock = document.getElementById('passive-vocab-block');
+  if (Array.isArray(classData.passiveVocab) && classData.passiveVocab.length) {
+    renderVocabList(document.getElementById('passive-vocab-list'), classData.passiveVocab, speechSupported);
+    passiveBlock.hidden = false;
   }
 
   mountFlashcards(document.getElementById('flashcard-container'), classData.vocab);
   mountQuiz(document.getElementById('quiz-container'), classData.quiz);
   mountSpeakingPractice(document.getElementById('speaking-practice-container'), classData);
+
+  const dialoguesSection = document.getElementById('section-dialogues');
+  const dialoguesNavLink = document.querySelector('#section-menu a[href="#section-dialogues"]');
+  if (Array.isArray(classData.dialogues) && classData.dialogues.length) {
+    renderDialogues(document.getElementById('dialogues-container'), classData.dialogues);
+  } else {
+    if (dialoguesSection) dialoguesSection.remove();
+    if (dialoguesNavLink) dialoguesNavLink.remove();
+  }
 
   setupSectionMenuScrollSpy();
   await setupClassNav(classData.number);
@@ -124,6 +119,52 @@ async function setupClassNav(currentNumber) {
   } catch (err) {
     // Navigation is a nice-to-have; ignore failures here.
   }
+}
+
+function renderVocabList(listEl, items, speechSupported) {
+  listEl.innerHTML = (items || [])
+    .map(
+      (v) => `
+      <li>
+        <span class="vocab-es-group">
+          <span class="es">${escapeHtmlLocal(v.es)}</span>
+          ${speechSupported ? `<button class="speak-btn" data-text="${escapeAttrLocal(v.es)}" title="Listen" aria-label="Listen to pronunciation">🔊</button>` : ''}
+          ${v.youglish ? `<a class="youglish-link" href="${escapeAttrLocal(v.youglish)}" target="_blank" rel="noopener" title="Watch on YouGlish.com" aria-label="Watch native speakers say this on YouGlish">🎬</a>` : ''}
+        </span>
+        <span class="en">${escapeHtmlLocal(v.en)}</span>
+      </li>
+    `
+    )
+    .join('');
+
+  if (speechSupported) {
+    listEl.querySelectorAll('.speak-btn').forEach((btn) => {
+      btn.addEventListener('click', () => speakSpanish(btn.dataset.text));
+    });
+  }
+}
+
+function renderDialogues(container, dialogues) {
+  container.innerHTML = dialogues
+    .map(
+      (d, i) => `
+      <div class="dialogue-block">
+        <h3>${escapeHtmlLocal(d.title || `Version ${i + 1}`)}</h3>
+        <div class="chat-window dialogue-window">
+          ${d.turns
+            .map(
+              (t) => `
+              <div class="chat-bubble ${t.speaker === 'Tú' ? 'user' : 'ai'}">
+                <strong>${escapeHtmlLocal(t.speaker)}:</strong> ${escapeHtmlLocal(t.es)}
+              </div>
+            `
+            )
+            .join('')}
+        </div>
+      </div>
+    `
+    )
+    .join('');
 }
 
 function escapeHtmlLocal(str) {

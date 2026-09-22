@@ -154,6 +154,21 @@ section.panel h2 {
   }
 }
 
+#passive-vocab-block {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-border);
+}
+#passive-vocab-block h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+.dialogue-block + .dialogue-block { margin-top: 1.5rem; }
+.dialogue-block h3 { margin: 0 0 0.5rem; font-size: 1rem; color: var(--color-muted); }
+.dialogue-window { height: auto; max-height: 420px; }
+
 button.speak-btn {
   background: none;
   border: none;

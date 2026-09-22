@@ -1,6 +1,6 @@
 [
   { "id": "class-01", "number": 1, "title": "Greetings & Introductions", "theme": "Greetings, introductions, where you're from, saying goodbye", "available": true },
-  { "id": "class-02", "number": 2, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-02", "number": 2, "title": "De compras", "theme": "Shopping: asking for an item, prices, and paying by card or cash", "available": true },
   { "id": "class-03", "number": 3, "title": "Coming soon", "theme": "", "available": false },
   { "id": "class-04", "number": 4, "title": "Coming soon", "theme": "", "available": false },
   { "id": "class-05", "number": 5, "title": "Coming soon", "theme": "", "available": false },

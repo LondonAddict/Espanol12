@@ -1,0 +1,105 @@
+{
+  "id": "class-02",
+  "number": 2,
+  "title": "De compras",
+  "theme": "Shopping: asking for an item, prices, and paying by card or cash",
+  "vocab": [
+    { "es": "Quería", "en": "I'd like / I wanted (a polite way to ask for something)", "youglish": "https://youglish.com/pronounce/Quería/spanish/es" },
+    { "es": "Esto", "en": "This", "youglish": "https://youglish.com/pronounce/Esto/spanish/es" },
+    { "es": "Vale", "en": "Okay / Alright", "youglish": "https://youglish.com/pronounce/Vale/spanish/es" },
+    { "es": "¿Cuánto cuesta?", "en": "How much does it cost?", "youglish": "https://youglish.com/pronounce/Cuánto_cuesta/spanish/es" },
+    { "es": "Tarjeta", "en": "Card", "youglish": "https://youglish.com/pronounce/Tarjeta/spanish/es" },
+    { "es": "Efectivo", "en": "Cash", "youglish": "https://youglish.com/pronounce/Efectivo/spanish/es" },
+    { "es": "Uno", "en": "One", "youglish": "https://youglish.com/pronounce/Uno/spanish/es" },
+    { "es": "Dos", "en": "Two", "youglish": "https://youglish.com/pronounce/Dos/spanish/es" },
+    { "es": "Tres", "en": "Three", "youglish": "https://youglish.com/pronounce/Tres/spanish/es" },
+    { "es": "Cuatro", "en": "Four", "youglish": "https://youglish.com/pronounce/Cuatro/spanish/es" },
+    { "es": "Cinco", "en": "Five", "youglish": "https://youglish.com/pronounce/Cinco/spanish/es" },
+    { "es": "Euros", "en": "Euros (currency)", "youglish": "https://youglish.com/pronounce/Euros/spanish/es" },
+    { "es": "Sí", "en": "Yes", "youglish": "https://youglish.com/pronounce/Sí/spanish/es" },
+    { "es": "No", "en": "No", "youglish": "https://youglish.com/pronounce/No/spanish/es" }
+  ],
+  "passiveVocab": [
+    { "es": "¿Qué te pongo?", "en": "What can I get you? (said by a shop assistant)", "youglish": "https://youglish.com/pronounce/Qué_te_pongo/spanish/es" },
+    { "es": "¿Cuántos?", "en": "How many? (masculine)", "youglish": "https://youglish.com/pronounce/Cuántos/spanish/es" },
+    { "es": "¿Cuántas?", "en": "How many? (feminine)", "youglish": "https://youglish.com/pronounce/Cuántas/spanish/es" }
+  ],
+  "phraseBank": [
+    "Hola",
+    "¿Qué tal?",
+    "Bien, ¿y tú?",
+    "Buenos días",
+    "Gracias",
+    "Adiós",
+    "Hasta luego",
+    "Quería",
+    "Esto",
+    "Vale",
+    "¿Cuánto cuesta?",
+    "Tarjeta",
+    "Efectivo",
+    "Uno",
+    "Dos",
+    "Tres",
+    "Cuatro",
+    "Cinco",
+    "Euros",
+    "Sí",
+    "No",
+    "¿Qué te pongo?",
+    "¿Cuántos?",
+    "¿Cuántas?"
+  ],
+  "quiz": [
+    { "question": "How do you say 'Card' in Spanish?", "choices": ["Tarjeta", "Efectivo", "Vale", "Esto"], "answer": "Tarjeta" },
+    { "question": "What does 'efectivo' mean?", "choices": ["Cash", "Card", "Okay", "This"], "answer": "Cash" },
+    { "question": "How would you politely say 'I'd like this, please'?", "choices": ["Quería esto, por favor.", "¿Cuánto cuesta?", "¿Tarjeta o efectivo?", "Vale."], "answer": "Quería esto, por favor." },
+    { "question": "What does '¿Cuánto cuesta?' mean?", "choices": ["How much does it cost?", "What can I get you?", "How many are there?", "Card or cash?"], "answer": "How much does it cost?" },
+    { "question": "Which word means 'Okay / Alright'?", "choices": ["Vale", "Esto", "Sí", "No"], "answer": "Vale" },
+    { "question": "How do you say the number 'three' in Spanish?", "choices": ["Tres", "Dos", "Cuatro", "Cinco"], "answer": "Tres" },
+    { "question": "How do you say the number 'five' in Spanish?", "choices": ["Cinco", "Cuatro", "Uno", "Dos"], "answer": "Cinco" },
+    { "question": "What is the Spanish word for the currency 'euros'?", "choices": ["Euros", "Efectivo", "Tarjeta", "Vale"], "answer": "Euros" },
+    { "question": "How do you say 'Yes' in Spanish?", "choices": ["Sí", "No", "Vale", "Esto"], "answer": "Sí" },
+    { "question": "How do you say 'No' in Spanish?", "choices": ["No", "Sí", "Vale", "Esto"], "answer": "No" }
+  ],
+  "dialogues": [
+    {
+      "title": "Version 1 — you greet first",
+      "turns": [
+        { "speaker": "Tú", "es": "Hola, ¿qué tal?" },
+        { "speaker": "Vendedor", "es": "Bien, ¿y tú?" },
+        { "speaker": "Tú", "es": "Bien, gracias. Quería esto por favor." },
+        { "speaker": "Vendedor", "es": "¿Esto?" },
+        { "speaker": "Tú", "es": "No, esto. / Sí, esto." },
+        { "speaker": "Vendedor", "es": "Vale. Cinco euros. ¿Tarjeta o efectivo?" },
+        { "speaker": "Tú", "es": "Tarjeta." },
+        { "speaker": "Vendedor", "es": "Vale. Gracias, hasta luego." },
+        { "speaker": "Tú", "es": "Adiós." }
+      ]
+    },
+    {
+      "title": "Version 2 — the vendor greets first",
+      "turns": [
+        { "speaker": "Vendedor", "es": "Hola, ¿qué te pongo?" },
+        { "speaker": "Tú", "es": "¡Buenos días! Quería esto por favor." },
+        { "speaker": "Vendedor", "es": "¿Esto?" },
+        { "speaker": "Tú", "es": "No, esto. / Sí, esto. ¿Cuánto cuesta?" },
+        { "speaker": "Vendedor", "es": "Cinco euros. ¿Tarjeta o efectivo?" },
+        { "speaker": "Tú", "es": "Tarjeta." },
+        { "speaker": "Vendedor", "es": "Vale. Gracias, adiós." },
+        { "speaker": "Tú", "es": "Hasta luego." }
+      ]
+    }
+  ],
+  "speakingPractice": {
+    "scenario": "You are a friendly shop vendor (vendedor/vendedora) helping the student, who is a customer buying an item in your small shop.",
+    "goalOrder": [
+      "Either greet the customer first with something like '¡Hola! ¿Qué te pongo?', or wait for their greeting and answer warmly (e.g. 'Bien, ¿y tú?') - vary which one you do across conversations, as in the two example dialogues",
+      "Let them tell you what they'd like ('Quería esto, por favor.') and confirm the item ('¿Esto?')",
+      "State a price using one of the taught numbers plus 'euros' (e.g. 'Cinco euros.', but feel free to vary the number) and ask how they'll pay ('¿Tarjeta o efectivo?')",
+      "Acknowledge their payment choice ('Vale.') and thank them ('Gracias')",
+      "Close the conversation warmly, varying between 'Adiós' and 'Hasta luego' as in the examples"
+    ],
+    "openingLine": "¡Hola! ¿Qué te pongo?"
+  }
+}

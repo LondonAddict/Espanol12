@@ -19,12 +19,20 @@ function getClient() {
 }
 
 function buildSystemPrompt(classData) {
-  const { title, phraseBank, speakingPractice } = classData;
+  const { title, phraseBank, speakingPractice, dialogues } = classData;
   const scenario = speakingPractice && speakingPractice.scenario
     ? speakingPractice.scenario
     : 'You are a friendly conversation partner practicing Spanish with a beginner student.';
   const goalOrder = speakingPractice && Array.isArray(speakingPractice.goalOrder)
     ? speakingPractice.goalOrder.map((step, i) => `${i + 1}. ${step}`).join('\n')
+    : '';
+  const dialogueExamples = Array.isArray(dialogues) && dialogues.length
+    ? dialogues
+        .map((d, i) => {
+          const turns = d.turns.map((t) => `${t.speaker}: ${t.es}`).join('\n');
+          return `Example ${i + 1}${d.title ? ` (${d.title})` : ''}:\n${turns}`;
+        })
+        .join('\n\n')
     : '';
 
   return [
@@ -37,6 +45,10 @@ function buildSystemPrompt(classData) {
     phraseBank.map((p) => `- ${p}`).join('\n'),
     '',
     goalOrder ? `Try to guide the conversation naturally through this order, one step per turn:\n${goalOrder}` : '',
+    '',
+    dialogueExamples
+      ? `Here are example conversations for this class. Use them as a model for the natural flow and phrasing, but don't repeat one verbatim every time - vary the order and word choice within the phrase bank as described above:\n\n${dialogueExamples}`
+      : '',
     '',
     'When the student asks a question that has a real answer in the phrase bank (e.g. "¿Qué tal?" or "¿Cómo estás?"), actually answer it with an appropriate reply phrase (e.g. "Bien, gracias. ¿Y tú?") before continuing - do not just deflect by asking the same question back every time.',
     '',

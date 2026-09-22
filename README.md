@@ -67,10 +67,19 @@ chat, which will show a friendly "not configured yet" message instead of crashin
    `youglish` link is optional per entry; see below), `phraseBank` (the exact closed
    list of phrases the AI is allowed to use), `quiz` (array of
    `{ question, choices, answer }`), and `speakingPractice` (`scenario`, `goalOrder`,
-   `openingLine`).
+   `openingLine`). Two more fields are optional and only render if present (Class 1
+   has neither, Class 2 has both — see `class-02.json` for a worked example):
+   - `passiveVocab` — same shape as `vocab` (`{ es, en, youglish }`), for words the
+     student should recognize but isn't drilled on in flashcards/quiz. Rendered as an
+     "Also good to recognize" list under the main vocabulary, and still included in
+     `phraseBank` if the AI (e.g. playing a shopkeeper) needs to say them.
+   - `dialogues` — array of `{ title, turns: [{ speaker, es }] }`, rendered as a
+     read-through "Example Dialogues" section (using the same chat-bubble styling as
+     Speaking Practice) and also fed to the AI's system prompt as a model for natural
+     flow. Omit entirely if a class has no scripted example dialogue.
 2. Update that class's entry in `data/classes/index.json`: set `title`, `theme`, and
    `available: true`.
-3. Commit and push — no frontend code changes needed.
+3. Commit and push — no other frontend code changes needed.
 
 Per the task brief, classes 2–12 should each land as their own commit/PR once Viktoria
 provides that class's content.
