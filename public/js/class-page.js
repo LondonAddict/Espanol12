@@ -47,6 +47,18 @@ async function initClassPage() {
   mountQuiz(document.getElementById('quiz-container'), classData.quiz);
   mountSpeakingPractice(document.getElementById('speaking-practice-container'), classData);
 
+  const priceSection = document.getElementById('section-price');
+  const priceNavLink = document.querySelector('#section-menu a[href="#section-price"]');
+  if (classData.priceExercise && Array.isArray(classData.priceExercise.items) && classData.priceExercise.items.length) {
+    document.getElementById('price-instructions').textContent =
+      classData.priceExercise.instructions ||
+      'Read (or listen to) the price in words, then type it in figures, e.g. "tres setenta" → 3,70.';
+    mountPriceExercise(document.getElementById('price-exercise-container'), classData.priceExercise);
+  } else {
+    if (priceSection) priceSection.remove();
+    if (priceNavLink) priceNavLink.remove();
+  }
+
   const dialoguesSection = document.getElementById('section-dialogues');
   const dialoguesNavLink = document.querySelector('#section-menu a[href="#section-dialogues"]');
   if (Array.isArray(classData.dialogues) && classData.dialogues.length) {
@@ -154,7 +166,7 @@ function renderDialogues(container, dialogues) {
           ${d.turns
             .map(
               (t) => `
-              <div class="chat-bubble ${t.speaker === 'Tú' ? 'user' : 'ai'}">
+              <div class="chat-bubble ${isCustomerTurn(t) ? 'user' : 'ai'}">
                 <strong>${escapeHtmlLocal(t.speaker)}:</strong> ${escapeHtmlLocal(t.es)}
               </div>
             `
@@ -165,6 +177,15 @@ function renderDialogues(container, dialogues) {
     `
     )
     .join('');
+}
+
+// Turns can say who's speaking (role: "customer" | "staff") for dialogues
+// with more than two speakers or non-"Tú" student labels (e.g. "Cliente 1").
+// Falls back to the original Tú-vs-everyone-else heuristic when role is
+// omitted, so existing dialogues (Class 2) render unchanged.
+function isCustomerTurn(t) {
+  if (t.role) return t.role === 'customer';
+  return t.speaker === 'Tú';
 }
 
 function escapeHtmlLocal(str) {

@@ -73,10 +73,18 @@ chat, which will show a friendly "not configured yet" message instead of crashin
      student should recognize but isn't drilled on in flashcards/quiz. Rendered as an
      "Also good to recognize" list under the main vocabulary, and still included in
      `phraseBank` if the AI (e.g. playing a shopkeeper) needs to say them.
-   - `dialogues` — array of `{ title, turns: [{ speaker, es }] }`, rendered as a
+   - `dialogues` — array of `{ title, turns: [{ speaker, role, es }] }`, rendered as a
      read-through "Example Dialogues" section (using the same chat-bubble styling as
      Speaking Practice) and also fed to the AI's system prompt as a model for natural
-     flow. Omit entirely if a class has no scripted example dialogue.
+     flow. `role` is `"customer"` or `"staff"` and controls which side of the chat a
+     turn renders on (falls back to treating the speaker literally named "Tú" as the
+     customer if `role` is omitted, for older data). Omit `dialogues` entirely if a
+     class has no scripted example dialogue.
+   - `priceExercise` — `{ instructions, items: [{ words, euros, cents }] }` for a
+     "type the price you hear/read" drill (e.g. `words: "tres setenta"` →
+     `euros: 3, cents: 70`). Rendered as its own "Price Listening Practice" section
+     with a 🔊 replay button; accepts the answer with either a comma or a dot as the
+     decimal separator. Omit entirely if a class has no price exercise.
 2. Update that class's entry in `data/classes/index.json`: set `title`, `theme`, and
    `available: true`.
 3. Commit and push — no other frontend code changes needed.
