@@ -73,13 +73,23 @@ chat, which will show a friendly "not configured yet" message instead of crashin
      student should recognize but isn't drilled on in flashcards/quiz. Rendered as an
      "Also good to recognize" list under the main vocabulary, and still included in
      `phraseBank` if the AI (e.g. playing a shopkeeper) needs to say them.
-   - `dialogues` — array of `{ title, turns: [{ speaker, role, es }] }`, rendered as a
-     read-through "Example Dialogues" section (using the same chat-bubble styling as
-     Speaking Practice) and also fed to the AI's system prompt as a model for natural
-     flow. `role` is `"customer"` or `"staff"` and controls which side of the chat a
-     turn renders on (falls back to treating the speaker literally named "Tú" as the
-     customer if `role` is omitted, for older data). Omit `dialogues` entirely if a
-     class has no scripted example dialogue.
+   - `dialogues` — array of `{ title, practiced, turns: [{ speaker, role, es }] }`,
+     rendered as a read-through "Example Dialogues" section (chat-bubble styling,
+     each line gets its own 🔊 replay button) and also fed to the AI's system prompt
+     as a model for natural flow. `role` is `"customer"` or `"staff"` and controls
+     which side of the chat a turn renders on (falls back to treating the speaker
+     literally named "Tú" as the customer if `role` is omitted, for older data).
+     `practiced` defaults to `true` when omitted; set it to `false` for a "next
+     class" preview dialogue that should be *shown* but not yet usable by the AI —
+     with it `false`, that dialogue's exact lines are excluded from both the
+     system prompt's example conversations and the AI's permitted phrase list
+     (see `class-04.json`). **To "unlock" it later, flip that one field to `true`
+     (or delete it)** — its lines are automatically unioned into the AI's phrase
+     bank at that point, no other edit needed, *unless* a line uses vocabulary
+     that was never taught (e.g. a brand-new phrase that first appears in the
+     dialogue itself) — add that to `phraseBank` by hand when you unlock it, since
+     the AI still can't say words it's never been given. Omit `dialogues` entirely
+     if a class has no scripted example dialogue.
    - `priceExercise` — `{ instructions, items: [{ words, euros, cents }] }` for a
      "type the price you hear/read" drill (e.g. `words: "tres setenta"` →
      `euros: 3, cents: 70`). Rendered as its own "Price Listening Practice" section

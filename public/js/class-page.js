@@ -157,6 +157,8 @@ function renderVocabList(listEl, items, speechSupported) {
 }
 
 function renderDialogues(container, dialogues) {
+  const speechSupported = isSpeechSynthesisSupported();
+
   container.innerHTML = dialogues
     .map(
       (d, i) => `
@@ -167,7 +169,8 @@ function renderDialogues(container, dialogues) {
             .map(
               (t) => `
               <div class="chat-bubble ${isCustomerTurn(t) ? 'user' : 'ai'}">
-                <strong>${escapeHtmlLocal(t.speaker)}:</strong> ${escapeHtmlLocal(t.es)}
+                <span><strong>${escapeHtmlLocal(t.speaker)}:</strong> ${escapeHtmlLocal(t.es)}</span>
+                ${speechSupported ? `<button class="speak-btn dialogue-speak-btn" data-text="${escapeAttrLocal(t.es)}" title="Listen" aria-label="Listen to this line">🔊</button>` : ''}
               </div>
             `
             )
@@ -177,6 +180,12 @@ function renderDialogues(container, dialogues) {
     `
     )
     .join('');
+
+  if (speechSupported) {
+    container.querySelectorAll('.dialogue-speak-btn').forEach((btn) => {
+      btn.addEventListener('click', () => speakSpanish(btn.dataset.text));
+    });
+  }
 }
 
 // Turns can say who's speaking (role: "customer" | "staff") for dialogues

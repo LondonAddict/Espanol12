@@ -26,14 +26,25 @@ function buildSystemPrompt(classData) {
   const goalOrder = speakingPractice && Array.isArray(speakingPractice.goalOrder)
     ? speakingPractice.goalOrder.map((step, i) => `${i + 1}. ${step}`).join('\n')
     : '';
-  const dialogueExamples = Array.isArray(dialogues) && dialogues.length
-    ? dialogues
+
+  // A dialogue with practiced: false is a "next class" preview - shown on the
+  // page, but kept out of both the AI's example conversations AND its
+  // permitted phrase list. Flip that one flag to true (or remove the field)
+  // once it's actually been taught, and its exact lines become fair game for
+  // the AI automatically - no need to also hand-copy them into phraseBank.
+  const practicedDialogues = Array.isArray(dialogues)
+    ? dialogues.filter((d) => d.practiced !== false)
+    : [];
+  const dialogueExamples = practicedDialogues.length
+    ? practicedDialogues
         .map((d, i) => {
           const turns = d.turns.map((t) => `${t.speaker}: ${t.es}`).join('\n');
           return `Example ${i + 1}${d.title ? ` (${d.title})` : ''}:\n${turns}`;
         })
         .join('\n\n')
     : '';
+  const dialogueLines = practicedDialogues.flatMap((d) => d.turns.map((t) => t.es));
+  const effectivePhraseBank = Array.from(new Set([...(phraseBank || []), ...dialogueLines]));
 
   return [
     `You are a friendly Spanish conversation partner helping a beginner practice for Class ${classData.number}: "${title}".`,
@@ -42,7 +53,7 @@ function buildSystemPrompt(classData) {
     'STRICT RULE: You may ONLY use the following phrases, spoken in Spanish, exactly as written or with minor natural variants (e.g. adjusting for gender, or combining two of them). Do NOT introduce any Spanish vocabulary or grammar that is not on this list, and do not switch to English unless the student seems completely stuck and needs a one-word hint.',
     '',
     'PHRASE BANK:',
-    phraseBank.map((p) => `- ${p}`).join('\n'),
+    effectivePhraseBank.map((p) => `- ${p}`).join('\n'),
     '',
     goalOrder ? `Try to guide the conversation naturally through this order, one step per turn:\n${goalOrder}` : '',
     '',
@@ -130,3 +141,4 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
+module.exports.buildSystemPrompt = buildSystemPrompt;
