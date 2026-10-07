@@ -99,6 +99,15 @@ chat, which will show a friendly "not configured yet" message instead of crashin
    `available: true`.
 3. Commit and push — no other frontend code changes needed.
 
+**Don't re-list review content in `vocab`/`passiveVocab`/`quiz`.** When a class revises
+earlier material (e.g. Class 4 revising Class 3's drinks and numbers before teaching new
+restaurant content), put the revised words in that class's own `phraseBank` only — not
+in `vocab`/`passiveVocab` — so the AI still has them for a coherent conversation, but
+the on-page Vocabulary/Flashcards/Quiz only show what's actually new this lesson. (Class
+2 already does this with Class 1's greetings.) `phraseBank` is never required to be a
+subset of `vocab` + `passiveVocab` — it's the AI's full permitted vocabulary, while
+`vocab`/`passiveVocab` are just this lesson's new/drillable material.
+
 Per the task brief, classes 2–12 should each land as their own commit/PR once Viktoria
 provides that class's content.
 
