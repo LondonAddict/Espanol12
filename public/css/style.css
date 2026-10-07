@@ -165,6 +165,16 @@ section.panel h2 {
   color: var(--color-muted);
 }
 
+.vocab-category-group + .vocab-category-group { margin-top: 1.25rem; }
+.vocab-category-heading {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+}
+
 .dialogue-block + .dialogue-block { margin-top: 1.5rem; }
 .dialogue-block h3 { margin: 0 0 0.5rem; font-size: 1rem; color: var(--color-muted); }
 .dialogue-window { height: auto; max-height: 420px; }

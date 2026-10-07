@@ -133,24 +133,51 @@ async function setupClassNav(currentNumber) {
   }
 }
 
-function renderVocabList(listEl, items, speechSupported) {
-  listEl.innerHTML = (items || [])
+function groupByCategory(items) {
+  const groups = [];
+  const indexByCategory = new Map();
+  (items || []).forEach((item) => {
+    const cat = item.category || null;
+    if (!indexByCategory.has(cat)) {
+      indexByCategory.set(cat, groups.length);
+      groups.push({ category: cat, items: [] });
+    }
+    groups[indexByCategory.get(cat)].items.push(item);
+  });
+  return groups;
+}
+
+function renderVocabItem(v, speechSupported) {
+  return `
+    <li>
+      <span class="vocab-es-group">
+        <span class="es">${escapeHtmlLocal(v.es)}</span>
+        ${speechSupported ? `<button class="speak-btn" data-text="${escapeAttrLocal(v.es)}" title="Listen" aria-label="Listen to pronunciation">🔊</button>` : ''}
+        ${v.youglish ? `<a class="youglish-link" href="${escapeAttrLocal(v.youglish)}" target="_blank" rel="noopener" title="Watch on YouGlish.com" aria-label="Watch native speakers say this on YouGlish">🎬</a>` : ''}
+      </span>
+      <span class="en">${escapeHtmlLocal(v.en)}</span>
+    </li>
+  `;
+}
+
+function renderVocabList(container, items, speechSupported) {
+  const groups = groupByCategory(items);
+
+  container.innerHTML = groups
     .map(
-      (v) => `
-      <li>
-        <span class="vocab-es-group">
-          <span class="es">${escapeHtmlLocal(v.es)}</span>
-          ${speechSupported ? `<button class="speak-btn" data-text="${escapeAttrLocal(v.es)}" title="Listen" aria-label="Listen to pronunciation">🔊</button>` : ''}
-          ${v.youglish ? `<a class="youglish-link" href="${escapeAttrLocal(v.youglish)}" target="_blank" rel="noopener" title="Watch on YouGlish.com" aria-label="Watch native speakers say this on YouGlish">🎬</a>` : ''}
-        </span>
-        <span class="en">${escapeHtmlLocal(v.en)}</span>
-      </li>
+      (group) => `
+      <div class="vocab-category-group">
+        ${group.category ? `<h4 class="vocab-category-heading">${escapeHtmlLocal(group.category)}</h4>` : ''}
+        <ul class="vocab-list">
+          ${group.items.map((v) => renderVocabItem(v, speechSupported)).join('')}
+        </ul>
+      </div>
     `
     )
     .join('');
 
   if (speechSupported) {
-    listEl.querySelectorAll('.speak-btn').forEach((btn) => {
+    container.querySelectorAll('.speak-btn').forEach((btn) => {
       btn.addEventListener('click', () => speakSpanish(btn.dataset.text));
     });
   }

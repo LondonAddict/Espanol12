@@ -4,25 +4,25 @@
   "title": "De compras",
   "theme": "Shopping: asking for an item, prices, and paying by card or cash",
   "vocab": [
-    { "es": "Quería", "en": "I'd like / I wanted (a polite way to ask for something)", "youglish": "https://youglish.com/pronounce/Quería/spanish/es" },
-    { "es": "Esto", "en": "This", "youglish": "https://youglish.com/pronounce/Esto/spanish/es" },
-    { "es": "Vale", "en": "Okay / Alright", "youglish": "https://youglish.com/pronounce/Vale/spanish/es" },
-    { "es": "¿Cuánto cuesta?", "en": "How much does it cost?", "youglish": "https://youglish.com/pronounce/Cuánto_cuesta/spanish/es" },
-    { "es": "Tarjeta", "en": "Card", "youglish": "https://youglish.com/pronounce/Tarjeta/spanish/es" },
-    { "es": "Efectivo", "en": "Cash", "youglish": "https://youglish.com/pronounce/Efectivo/spanish/es" },
-    { "es": "Uno", "en": "One", "youglish": "https://youglish.com/pronounce/Uno/spanish/es" },
-    { "es": "Dos", "en": "Two", "youglish": "https://youglish.com/pronounce/Dos/spanish/es" },
-    { "es": "Tres", "en": "Three", "youglish": "https://youglish.com/pronounce/Tres/spanish/es" },
-    { "es": "Cuatro", "en": "Four", "youglish": "https://youglish.com/pronounce/Cuatro/spanish/es" },
-    { "es": "Cinco", "en": "Five", "youglish": "https://youglish.com/pronounce/Cinco/spanish/es" },
-    { "es": "Euros", "en": "Euros (currency)", "youglish": "https://youglish.com/pronounce/Euros/spanish/es" },
-    { "es": "Sí", "en": "Yes", "youglish": "https://youglish.com/pronounce/Sí/spanish/es" },
-    { "es": "No", "en": "No", "youglish": "https://youglish.com/pronounce/No/spanish/es" }
+    { "es": "Quería", "category": "Shopping Phrases", "en": "I'd like / I wanted (a polite way to ask for something)", "youglish": "https://youglish.com/pronounce/Quería/spanish/es" },
+    { "es": "Esto", "category": "Shopping Phrases", "en": "This", "youglish": "https://youglish.com/pronounce/Esto/spanish/es" },
+    { "es": "Vale", "category": "Shopping Phrases", "en": "Okay / Alright", "youglish": "https://youglish.com/pronounce/Vale/spanish/es" },
+    { "es": "¿Cuánto cuesta?", "category": "Shopping Phrases", "en": "How much does it cost?", "youglish": "https://youglish.com/pronounce/Cuánto_cuesta/spanish/es" },
+    { "es": "Tarjeta", "category": "Payment", "en": "Card", "youglish": "https://youglish.com/pronounce/Tarjeta/spanish/es" },
+    { "es": "Efectivo", "category": "Payment", "en": "Cash", "youglish": "https://youglish.com/pronounce/Efectivo/spanish/es" },
+    { "es": "Uno", "category": "Numbers", "en": "One", "youglish": "https://youglish.com/pronounce/Uno/spanish/es" },
+    { "es": "Dos", "category": "Numbers", "en": "Two", "youglish": "https://youglish.com/pronounce/Dos/spanish/es" },
+    { "es": "Tres", "category": "Numbers", "en": "Three", "youglish": "https://youglish.com/pronounce/Tres/spanish/es" },
+    { "es": "Cuatro", "category": "Numbers", "en": "Four", "youglish": "https://youglish.com/pronounce/Cuatro/spanish/es" },
+    { "es": "Cinco", "category": "Numbers", "en": "Five", "youglish": "https://youglish.com/pronounce/Cinco/spanish/es" },
+    { "es": "Euros", "category": "Numbers", "en": "Euros (currency)", "youglish": "https://youglish.com/pronounce/Euros/spanish/es" },
+    { "es": "Sí", "category": "Basics", "en": "Yes", "youglish": "https://youglish.com/pronounce/Sí/spanish/es" },
+    { "es": "No", "category": "Basics", "en": "No", "youglish": "https://youglish.com/pronounce/No/spanish/es" }
   ],
   "passiveVocab": [
-    { "es": "¿Qué te pongo?", "en": "What can I get you? (said by a shop assistant)", "youglish": "https://youglish.com/pronounce/Qué_te_pongo/spanish/es" },
-    { "es": "¿Cuántos?", "en": "How many? (masculine)", "youglish": "https://youglish.com/pronounce/Cuántos/spanish/es" },
-    { "es": "¿Cuántas?", "en": "How many? (feminine)", "youglish": "https://youglish.com/pronounce/Cuántas/spanish/es" }
+    { "es": "¿Qué te pongo?", "category": "Questions", "en": "What can I get you? (said by a shop assistant)", "youglish": "https://youglish.com/pronounce/Qué_te_pongo/spanish/es" },
+    { "es": "¿Cuántos?", "category": "Questions", "en": "How many? (masculine)", "youglish": "https://youglish.com/pronounce/Cuántos/spanish/es" },
+    { "es": "¿Cuántas?", "category": "Questions", "en": "How many? (feminine)", "youglish": "https://youglish.com/pronounce/Cuántas/spanish/es" }
   ],
   "phraseBank": [
     "Hola",

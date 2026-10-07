@@ -63,16 +63,29 @@ chat, which will show a friendly "not configured yet" message instead of crashin
 ## Adding a new class (2–12)
 
 1. Add a `data/classes/class-XX.json` file following the shape of `class-01.json`:
-   `id`, `number`, `title`, `theme`, `vocab` (array of `{ es, en, youglish }` — the
-   `youglish` link is optional per entry; see below), `phraseBank` (the exact closed
-   list of phrases the AI is allowed to use), `quiz` (array of
+   `id`, `number`, `title`, `theme`, `vocab` (array of `{ es, en, category, youglish }`
+   — `category` is optional but strongly recommended once a class has more than
+   ~10-15 items; `youglish` is always optional, see below), `phraseBank` (the exact
+   closed list of phrases the AI is allowed to use), `quiz` (array of
    `{ question, choices, answer }`), and `speakingPractice` (`scenario`, `goalOrder`,
    `openingLine`). Two more fields are optional and only render if present (Class 1
    has neither, Class 2 has both — see `class-02.json` for a worked example):
-   - `passiveVocab` — same shape as `vocab` (`{ es, en, youglish }`), for words the
-     student should recognize but isn't drilled on in flashcards/quiz. Rendered as an
-     "Also good to recognize" list under the main vocabulary, and still included in
-     `phraseBank` if the AI (e.g. playing a shopkeeper) needs to say them.
+   - `passiveVocab` — same shape as `vocab` (`{ es, en, category, youglish }`), for
+     words the student should recognize but isn't drilled on in flashcards/quiz.
+     Rendered as an "Also good to recognize" list under the main vocabulary, and
+     still included in `phraseBank` if the AI (e.g. playing a shopkeeper) needs to
+     say them.
+   - `category` — a short topic label (e.g. "Numbers", "Food", "Questions",
+     "Greetings") shown as a heading above that group of words in the Vocabulary
+     list (see any current class file for examples). Entries are grouped by
+     category in first-appearance order, not alphabetically, so items sharing a
+     category don't need to be contiguous in the array — put a new category's
+     first item wherever makes sense and later items with that same category will
+     still land in the same group. `vocab` and `passiveVocab` are grouped
+     independently of each other. An entry with no `category` still renders, just
+     ungrouped (fine for a short list that doesn't need subdividing). Doesn't
+     affect `phraseBank`, flashcards, or quiz — purely a display grouping for the
+     Vocabulary section.
    - `dialogues` — array of `{ title, practiced, turns: [{ speaker, role, es }] }`,
      rendered as a read-through "Example Dialogues" section (chat-bubble styling,
      each line gets its own 🔊 replay button) and also fed to the AI's system prompt
