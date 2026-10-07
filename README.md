@@ -123,15 +123,23 @@ results page for that word/phrase, shown as a 🎬 icon next to the word. Two li
   — take the phrase, strip punctuation (¿ ¡ ? , etc.), replace spaces with underscores,
   keep accents and original capitalization. E.g. "¿De dónde eres?" → `De_dónde_eres`.
 
-**Link the core fragment, not the full teaching sentence.** YouGlish's `pronounce`
-search looks for that exact text in real video captions, so a short natural phrase
-(`la cuenta`, `ahora mismo`, `un cortado`) usually gets hits, but a sentence stapled
-together for teaching purposes (e.g. "Cinco minutos más, por favor.") almost never
-appears verbatim anywhere and returns nothing. When a vocab entry's `es` text is a
-constructed sentence — especially one wrapped around "por favor"/"gracias"/"sí,"/"no,"
-— point `youglish` at just its distinctive core (e.g. `Cinco_minutos_más`, dropping
-"por favor") rather than slugifying the whole thing. Genuine short phrases, greetings,
-numbers, and real menu/dish names don't need shortening.
+**Link the important content word, not the full teaching sentence — and not just
+whatever's short.** YouGlish's `pronounce` search looks for that exact text in real
+video captions, so a short natural phrase (`la cuenta`, `ahora mismo`, `un cortado`)
+usually gets hits, but a sentence stapled together for teaching purposes (e.g. "Cinco
+minutos más, por favor.") almost never appears verbatim anywhere and returns nothing.
+When a vocab entry's `es` text is a constructed sentence — especially one wrapped
+around "por favor"/"gracias"/"sí,"/"no," — point `youglish` at its distinctive core
+content word or phrase instead (e.g. `Cinco_minutos_más`, `La_cuenta`, `ahora_mismo`).
+That core must itself be meaningful vocabulary, not just short: a bare grammatical
+fragment like `Son` (from "Son cuatro treinta") or `Y_tú` (from "Bien, gracias. ¿Y
+tú?") teaches nothing on its own and isn't what the student came to hear — shortening
+for its own sake isn't the goal, finding real content is. **If nothing in the phrase
+is both important and realistically findable (e.g. the only unique content is numbers
+already linked elsewhere, as in "Son cuatro treinta"), omit the `youglish` field
+entirely** rather than link to a weak fallback — the icon just won't show for that
+entry, which is correct. Genuine short phrases, greetings, numbers, and real
+menu/dish names don't need shortening at all.
 
 If a vocab entry has no `youglish` field, the icon is simply omitted — it's optional.
 
