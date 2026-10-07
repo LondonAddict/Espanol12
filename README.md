@@ -123,6 +123,16 @@ results page for that word/phrase, shown as a 🎬 icon next to the word. Two li
   — take the phrase, strip punctuation (¿ ¡ ? , etc.), replace spaces with underscores,
   keep accents and original capitalization. E.g. "¿De dónde eres?" → `De_dónde_eres`.
 
+**Link the core fragment, not the full teaching sentence.** YouGlish's `pronounce`
+search looks for that exact text in real video captions, so a short natural phrase
+(`la cuenta`, `ahora mismo`, `un cortado`) usually gets hits, but a sentence stapled
+together for teaching purposes (e.g. "Cinco minutos más, por favor.") almost never
+appears verbatim anywhere and returns nothing. When a vocab entry's `es` text is a
+constructed sentence — especially one wrapped around "por favor"/"gracias"/"sí,"/"no,"
+— point `youglish` at just its distinctive core (e.g. `Cinco_minutos_más`, dropping
+"por favor") rather than slugifying the whole thing. Genuine short phrases, greetings,
+numbers, and real menu/dish names don't need shortening.
+
 If a vocab entry has no `youglish` field, the icon is simply omitted — it's optional.
 
 ## How AI Speaking Practice stays "closed vocabulary"
