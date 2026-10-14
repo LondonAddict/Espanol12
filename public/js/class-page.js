@@ -59,6 +59,28 @@ async function initClassPage() {
     if (priceNavLink) priceNavLink.remove();
   }
 
+  const timeSection = document.getElementById('section-time');
+  const timeNavLink = document.querySelector('#section-menu a[href="#section-time"]');
+  if (classData.timeExercise && Array.isArray(classData.timeExercise.items) && classData.timeExercise.items.length) {
+    document.getElementById('time-instructions').textContent =
+      classData.timeExercise.instructions ||
+      'Look at the digital time, then type it the Spanish way using "a las…", e.g. 09:30 → "a las nueve y media".';
+    mountTimeExercise(document.getElementById('time-exercise-container'), classData.timeExercise);
+  } else {
+    if (timeSection) timeSection.remove();
+    if (timeNavLink) timeNavLink.remove();
+  }
+
+  const timetableContainer = document.getElementById('timetable-container');
+  if (timetableContainer) {
+    if (Array.isArray(classData.timetable) && classData.timetable.length) {
+      renderTimetable(timetableContainer, classData.timetable);
+      timetableContainer.hidden = false;
+    } else {
+      timetableContainer.remove();
+    }
+  }
+
   const dialoguesSection = document.getElementById('section-dialogues');
   const dialoguesNavLink = document.querySelector('#section-menu a[href="#section-dialogues"]');
   if (Array.isArray(classData.dialogues) && classData.dialogues.length) {
@@ -181,6 +203,31 @@ function renderVocabList(container, items, speechSupported) {
       btn.addEventListener('click', () => speakSpanish(btn.dataset.text));
     });
   }
+}
+
+function renderTimetable(container, timetable) {
+  container.innerHTML = `
+    <h3>Horario</h3>
+    <table class="timetable">
+      <thead>
+        <tr><th>Destino</th><th>Salida</th><th>Vía</th><th>Precio</th></tr>
+      </thead>
+      <tbody>
+        ${timetable
+          .map(
+            (t) => `
+            <tr>
+              <td>${escapeHtmlLocal(t.destino)}</td>
+              <td>${escapeHtmlLocal(t.salida)}</td>
+              <td>${escapeHtmlLocal(t.via)}</td>
+              <td>${escapeHtmlLocal(String(t.precio))}€</td>
+            </tr>
+          `
+          )
+          .join('')}
+      </tbody>
+    </table>
+  `;
 }
 
 function renderDialogues(container, dialogues) {

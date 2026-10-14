@@ -212,8 +212,7 @@
   },
   "dialogues": [
     {
-      "title": "Next class – have a look before we start",
-      "practiced": false,
+      "title": "Postre, café y la cuenta",
       "turns": [
         { "speaker": "Camarero", "role": "staff", "es": "¡Hola!" },
         { "speaker": "Cliente", "role": "customer", "es": "Hola. Una mesa para uno, por favor." },
@@ -253,7 +252,7 @@
       "If they ask where the bathroom is, answer with a direction using 'a la derecha' or 'a la izquierda' (e.g. 'Al fondo, a la derecha.')",
       "If they ask how much something costs (singular 'cuesta/vale' or plural 'cuestan/valen'), quote a reasonable price using the taught numbers 0-19 plus tens (e.g. 'Son ocho noventa.')",
       "Check in with them at some point ('¿Todo bien?' / '¿Qué tal todo?' / '¿Os gusta?')",
-      "Do NOT bring up the bill, dessert, or coffee ('¿Postre o café?'), and do NOT end the meal - that's next week's lesson. Keep today's conversation going within this class's content instead."
+      "Once they seem done eating, ask '¿Postre o café?', then bring the bill when they ask for it - use 'Son treinta cincuenta.' and '¿Tarjeta o efectivo?' to wrap up the meal, and close with 'Gracias. ¡Hasta luego!'"
     ],
     "openingLine": "¡Hola! ¿Tenéis reserva?"
   }

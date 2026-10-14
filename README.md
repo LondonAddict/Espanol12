@@ -108,6 +108,28 @@ chat, which will show a friendly "not configured yet" message instead of crashin
      `euros: 3, cents: 70`). Rendered as its own "Price Listening Practice" section
      with a 🔊 replay button; accepts the answer with either a comma or a dot as the
      decimal separator. Omit entirely if a class has no price exercise.
+   - `timeExercise` — `{ instructions, items: [{ digital, base, daypart,
+     requireDaypart }] }` for a "type the time you see" drill (e.g. Class 5's time
+     dictation): shows `digital` (a 24-hour clock string like `"18:00"`) and checks
+     the typed answer against `base` (e.g. `"a las seis"`). When `requireDaypart` is
+     `false`, `base` alone is accepted, with or without any of "de la mañana/tarde/
+     noche" appended. When `requireDaypart` is `true`, the student must type `base`
+     followed by the exact `daypart` given (e.g. `"a las seis de la tarde"`) — use
+     this for times where the 24h-to-12h conversion itself is the point (so a bare
+     "a las seis" for 18:00 doesn't count as correct). Matching ignores case, accents,
+     and punctuation. Rendered as its own "Time Dictation Practice" section. Omit
+     entirely if a class has no time exercise.
+   - `timetable` — array of `{ destino, salida, horaEs, via, precio }` (e.g. Class
+     5's train station). `salida` is the 24-hour digital time shown to students in
+     the on-page timetable table; `horaEs` is that same time already written out
+     correctly in Spanish (e.g. `"a las seis de la tarde"`), which is what actually
+     gets fed to the AI so it can't mis-convert its own grounding data. `precio` is
+     the price per single ticket — the AI is instructed to double it when the student
+     asks for two. Rendered as a table next to the AI Speaking Practice chat, and
+     passed into the chat system prompt (see `server/routes/chat.js`) so the AI's
+     answers about price/time/platform stay consistent for a given destination
+     across a whole conversation. Omit entirely if a class's speaking practice
+     doesn't need a reference timetable.
 2. Update that class's entry in `data/classes/index.json`: set `title`, `theme`, and
    `available: true`.
 3. Commit and push — no other frontend code changes needed.

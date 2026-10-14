@@ -298,6 +298,21 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .price-feedback.correct { color: var(--color-accent); }
 .price-feedback.incorrect { color: var(--color-primary); }
 
+/* Timetable (speaking practice reference) */
+#timetable-container { margin-bottom: 1.25rem; }
+#timetable-container h3 { margin: 0 0 0.5rem; font-size: 1rem; color: var(--color-muted); }
+table.timetable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.05rem;
+}
+table.timetable th, table.timetable td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+table.timetable th { color: var(--color-accent); font-weight: 700; }
+
 /* Speaking practice chat */
 .chat-window {
   height: 340px;

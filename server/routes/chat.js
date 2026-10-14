@@ -19,7 +19,7 @@ function getClient() {
 }
 
 function buildSystemPrompt(classData) {
-  const { title, phraseBank, speakingPractice, dialogues } = classData;
+  const { title, phraseBank, speakingPractice, dialogues, timetable } = classData;
   const scenario = speakingPractice && speakingPractice.scenario
     ? speakingPractice.scenario
     : 'You are a friendly conversation partner practicing Spanish with a beginner student.';
@@ -46,6 +46,16 @@ function buildSystemPrompt(classData) {
   const dialogueLines = practicedDialogues.flatMap((d) => d.turns.map((t) => t.es));
   const effectivePhraseBank = Array.from(new Set([...(phraseBank || []), ...dialogueLines]));
 
+  // When a class has a timetable (e.g. Class 5's train station), the AI's
+  // answers about price/time/platform need to stay consistent for a given
+  // destination across the whole conversation - so ground it here rather
+  // than letting the model improvise a different answer each time.
+  const timetableLines = Array.isArray(timetable)
+    ? timetable
+        .map((t) => `${t.destino}: "Sale ${t.horaEs}." - "De la vía ${t.via}." - ${t.precio}€ por billete (double it for two tickets)`)
+        .join('\n')
+    : '';
+
   return [
     `You are a friendly Spanish conversation partner helping a beginner practice for Class ${classData.number}: "${title}".`,
     scenario,
@@ -54,6 +64,10 @@ function buildSystemPrompt(classData) {
     '',
     'PHRASE BANK:',
     effectivePhraseBank.map((p) => `- ${p}`).join('\n'),
+    '',
+    timetableLines
+      ? `TIMETABLE - ground every price/time/platform answer in this exact data. Always give the same answer for the same destination, whichever way the student asks:\n${timetableLines}`
+      : '',
     '',
     goalOrder ? `Try to guide the conversation naturally through this order, one step per turn:\n${goalOrder}` : '',
     '',
