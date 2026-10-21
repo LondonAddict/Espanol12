@@ -130,6 +130,37 @@ chat, which will show a friendly "not configured yet" message instead of crashin
      answers about price/time/platform stay consistent for a given destination
      across a whole conversation. Omit entirely if a class's speaking practice
      doesn't need a reference timetable.
+   - `numberExercise` — `{ instructions, items: [{ words, number }] }` for a "listen
+     to/read the number, type the digits" drill (e.g. Class 6's room/bus/address
+     numbers): `words` is the full spoken phrase for context (e.g. `"la habitación
+     ciento ocho"`), `number` is the plain integer to check the typed answer against
+     (e.g. `108`). Uses its own engine, `public/js/number-exercise.js` (a
+     `priceExercise`-style one-at-a-time drill, but checking a bare integer instead
+     of euros/cents). Rendered as its own "Numbers Practice" section. Omit entirely
+     if a class has no number-dictation drill.
+   - `placesTable` — array of `{ place, address, addressEs, bus, busEs, hours,
+     openEs, closeEs, directions }` (e.g. Class 6's "places you know as a local").
+     `address`/`bus`/`hours` are the human-readable digit forms shown in the
+     on-page reference table; `addressEs`/`busEs`/`openEs`/`closeEs` are those same
+     values already written out correctly in Spanish, fed to the AI instead of the
+     digit forms for the same mis-conversion-proofing reason as `timetable`'s
+     `horaEs`. `openEs`/`closeEs` can both be `""` for a place with no published
+     hours (the AI is told not to invent any). `directions` is the exact turn-by-turn
+     sentence the AI must repeat verbatim for that place. Reuses the same table
+     styling as `timetable` next to the AI Speaking Practice chat. A class can have
+     both `timetable` and `placesTable` if needed, or just one, or neither — each is
+     independently optional and both get folded into the chat system prompt (see
+     `server/routes/chat.js`) when present.
+   - `openCloseExercise` — same shape as `timeExercise` (`{ instructions, items:
+     [{ digital, base, daypart, requireDaypart }] }`) and reuses the exact same
+     `mountTimeExercise` engine — `digital` doesn't have to be a bare clock reading,
+     it's just the large prompt text shown to the student, so a class can repurpose
+     it for a different kind of time-dictation drill (e.g. Class 6's "Abre/Cierra"
+     opening-hours practice shows a shop sign + question instead of a plain clock).
+     Give it its own section/nav-link ids in `class.html` and its own conditional
+     mount block in `class-page.js` (see Class 6) rather than reusing `timeExercise`'s
+     ids, so a class can have both drills side by side if it ever needs to. Omit
+     entirely if a class has no opening-hours drill.
 2. Update that class's entry in `data/classes/index.json`: set `title`, `theme`, and
    `available: true`.
 3. Commit and push — no other frontend code changes needed.

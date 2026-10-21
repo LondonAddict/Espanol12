@@ -299,10 +299,12 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .price-feedback.incorrect { color: var(--color-primary); }
 
 /* Timetable (speaking practice reference) */
-#timetable-container { margin-bottom: 1.25rem; }
-#timetable-container h3 { margin: 0 0 0.5rem; font-size: 1rem; color: var(--color-muted); }
+#timetable-container, #places-table-container { margin-bottom: 1.25rem; }
+#timetable-container h3, #places-table-container h3 { margin: 0 0 0.5rem; font-size: 1rem; color: var(--color-muted); }
+.table-scroll { overflow-x: auto; max-width: 100%; }
 table.timetable {
   width: 100%;
+  min-width: 420px;
   border-collapse: collapse;
   font-size: 1.05rem;
 }

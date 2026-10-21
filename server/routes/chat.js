@@ -19,7 +19,7 @@ function getClient() {
 }
 
 function buildSystemPrompt(classData) {
-  const { title, phraseBank, speakingPractice, dialogues, timetable } = classData;
+  const { title, phraseBank, speakingPractice, dialogues, timetable, placesTable } = classData;
   const scenario = speakingPractice && speakingPractice.scenario
     ? speakingPractice.scenario
     : 'You are a friendly conversation partner practicing Spanish with a beginner student.';
@@ -56,6 +56,21 @@ function buildSystemPrompt(classData) {
         .join('\n')
     : '';
 
+  // Same idea for a class with a reference table of places (e.g. Class 6's
+  // directions practice): bake in the exact words for address/bus/hours so
+  // the AI can't mis-convert a number while grounding its answer, and give
+  // it the directions text verbatim since it's told to say that exactly.
+  const placesLines = Array.isArray(placesTable)
+    ? placesTable
+        .map((p) => {
+          const hours = p.openEs && p.closeEs
+            ? `abre ${p.openEs}, cierra ${p.closeEs}`
+            : 'no mencionar horario - no lo sabemos';
+          return `${p.place}: dirección "${p.addressEs}" - autobús "${p.busEs}" - horario: ${hours} - direcciones exactas: "${p.directions}"`;
+        })
+        .join('\n')
+    : '';
+
   return [
     `You are a friendly Spanish conversation partner helping a beginner practice for Class ${classData.number}: "${title}".`,
     scenario,
@@ -67,6 +82,10 @@ function buildSystemPrompt(classData) {
     '',
     timetableLines
       ? `TIMETABLE - ground every price/time/platform answer in this exact data. Always give the same answer for the same destination, whichever way the student asks:\n${timetableLines}`
+      : '',
+    '',
+    placesLines
+      ? `PLACES TABLE - this is everywhere you know. Ground every address/bus/hours/directions answer in this exact data, and give the "direcciones exactas" text for a place word for word, never shortened or improvised. If the student asks about somewhere not listed here, say "Lo siento, no sé." and nothing more:\n${placesLines}`
       : '',
     '',
     goalOrder ? `Try to guide the conversation naturally through this order, one step per turn:\n${goalOrder}` : '',

@@ -71,6 +71,30 @@ async function initClassPage() {
     if (timeNavLink) timeNavLink.remove();
   }
 
+  const openCloseSection = document.getElementById('section-openclose');
+  const openCloseNavLink = document.querySelector('#section-menu a[href="#section-openclose"]');
+  if (classData.openCloseExercise && Array.isArray(classData.openCloseExercise.items) && classData.openCloseExercise.items.length) {
+    document.getElementById('openclose-instructions').textContent =
+      classData.openCloseExercise.instructions ||
+      'Look at the shop\'s hours, then type the opening or closing time using "Abre a las…" / "Cierra a las…".';
+    mountTimeExercise(document.getElementById('openclose-exercise-container'), classData.openCloseExercise);
+  } else {
+    if (openCloseSection) openCloseSection.remove();
+    if (openCloseNavLink) openCloseNavLink.remove();
+  }
+
+  const numberSection = document.getElementById('section-numbers');
+  const numberNavLink = document.querySelector('#section-menu a[href="#section-numbers"]');
+  if (classData.numberExercise && Array.isArray(classData.numberExercise.items) && classData.numberExercise.items.length) {
+    document.getElementById('number-instructions').textContent =
+      classData.numberExercise.instructions ||
+      'Listen to (or read) the number, then type just the digits.';
+    mountNumberExercise(document.getElementById('number-exercise-container'), classData.numberExercise);
+  } else {
+    if (numberSection) numberSection.remove();
+    if (numberNavLink) numberNavLink.remove();
+  }
+
   const timetableContainer = document.getElementById('timetable-container');
   if (timetableContainer) {
     if (Array.isArray(classData.timetable) && classData.timetable.length) {
@@ -78,6 +102,16 @@ async function initClassPage() {
       timetableContainer.hidden = false;
     } else {
       timetableContainer.remove();
+    }
+  }
+
+  const placesTableContainer = document.getElementById('places-table-container');
+  if (placesTableContainer) {
+    if (Array.isArray(classData.placesTable) && classData.placesTable.length) {
+      renderPlacesTable(placesTableContainer, classData.placesTable);
+      placesTableContainer.hidden = false;
+    } else {
+      placesTableContainer.remove();
     }
   }
 
@@ -208,6 +242,7 @@ function renderVocabList(container, items, speechSupported) {
 function renderTimetable(container, timetable) {
   container.innerHTML = `
     <h3>Horario</h3>
+    <div class="table-scroll">
     <table class="timetable">
       <thead>
         <tr><th>Destino</th><th>Salida</th><th>Vía</th><th>Precio</th></tr>
@@ -227,6 +262,34 @@ function renderTimetable(container, timetable) {
           .join('')}
       </tbody>
     </table>
+    </div>
+  `;
+}
+
+function renderPlacesTable(container, placesTable) {
+  container.innerHTML = `
+    <h3>Lugares que conoces</h3>
+    <div class="table-scroll">
+    <table class="timetable">
+      <thead>
+        <tr><th>Lugar</th><th>Dirección</th><th>Autobús</th><th>Horario</th></tr>
+      </thead>
+      <tbody>
+        ${placesTable
+          .map(
+            (p) => `
+            <tr>
+              <td>${escapeHtmlLocal(p.place)}</td>
+              <td>${escapeHtmlLocal(p.address)}</td>
+              <td>${escapeHtmlLocal(p.bus)}</td>
+              <td>${p.hours ? escapeHtmlLocal(p.hours) : '—'}</td>
+            </tr>
+          `
+          )
+          .join('')}
+      </tbody>
+    </table>
+    </div>
   `;
 }
 
