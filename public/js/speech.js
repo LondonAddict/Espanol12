@@ -15,3 +15,18 @@ function speakSpanish(text) {
   utterance.rate = 0.9;
   window.speechSynthesis.speak(utterance);
 }
+
+/**
+ * Plays a listening-drill item's real audio file if it has one (item.audio),
+ * otherwise falls back to browser text-to-speech on its Spanish text. Lets a
+ * class mix real recorded/uploaded clips with TTS-read items with no change
+ * in how the rest of the page calls it.
+ */
+function playClip(item) {
+  if (item && item.audio) {
+    const audio = new Audio(item.audio);
+    audio.play().catch(() => speakSpanish(item.es));
+    return;
+  }
+  speakSpanish(item && item.es);
+}

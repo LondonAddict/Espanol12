@@ -24,28 +24,64 @@ async function initClassPage() {
     return;
   }
 
-  headingEl.textContent = `Class ${classData.number}`;
-  document.title = `Español12 — Class ${classData.number}: ${classData.title}`;
+  // A class with no `number` (e.g. the Listening Revision tile) isn't part
+  // of the numbered 1-12 sequence, so skip the "Class N" prefix for it.
+  const hasNumber = typeof classData.number === 'number';
+  headingEl.textContent = hasNumber ? `Class ${classData.number}` : classData.title;
+  document.title = `Español12 — ${hasNumber ? `Class ${classData.number}: ` : ''}${classData.title}`;
 
   const template = document.getElementById('class-content-template');
   main.innerHTML = '';
   main.appendChild(template.content.cloneNode(true));
 
-  document.getElementById('class-title').textContent = `Class ${classData.number}: ${classData.title}`;
+  document.getElementById('class-title').textContent = hasNumber
+    ? `Class ${classData.number}: ${classData.title}`
+    : classData.title;
   document.getElementById('class-theme').textContent = classData.theme || '';
 
   const speechSupported = isSpeechSynthesisSupported();
-  renderVocabList(document.getElementById('vocab-list'), classData.vocab, speechSupported);
 
-  const passiveBlock = document.getElementById('passive-vocab-block');
-  if (Array.isArray(classData.passiveVocab) && classData.passiveVocab.length) {
-    renderVocabList(document.getElementById('passive-vocab-list'), classData.passiveVocab, speechSupported);
-    passiveBlock.hidden = false;
+  const vocabSection = document.getElementById('section-vocab');
+  const vocabNavLink = document.querySelector('#section-menu a[href="#section-vocab"]');
+  if (Array.isArray(classData.vocab) && classData.vocab.length) {
+    renderVocabList(document.getElementById('vocab-list'), classData.vocab, speechSupported);
+
+    const passiveBlock = document.getElementById('passive-vocab-block');
+    if (Array.isArray(classData.passiveVocab) && classData.passiveVocab.length) {
+      renderVocabList(document.getElementById('passive-vocab-list'), classData.passiveVocab, speechSupported);
+      passiveBlock.hidden = false;
+    }
+  } else {
+    if (vocabSection) vocabSection.remove();
+    if (vocabNavLink) vocabNavLink.remove();
   }
 
-  mountFlashcards(document.getElementById('flashcard-container'), classData.vocab);
-  mountQuiz(document.getElementById('quiz-container'), classData.quiz);
-  mountSpeakingPractice(document.getElementById('speaking-practice-container'), classData);
+  const flashcardsSection = document.getElementById('section-flashcards');
+  const flashcardsNavLink = document.querySelector('#section-menu a[href="#section-flashcards"]');
+  if (Array.isArray(classData.vocab) && classData.vocab.length) {
+    mountFlashcards(document.getElementById('flashcard-container'), classData.vocab);
+  } else {
+    if (flashcardsSection) flashcardsSection.remove();
+    if (flashcardsNavLink) flashcardsNavLink.remove();
+  }
+
+  const quizSection = document.getElementById('section-quiz');
+  const quizNavLink = document.querySelector('#section-menu a[href="#section-quiz"]');
+  if (Array.isArray(classData.quiz) && classData.quiz.length) {
+    mountQuiz(document.getElementById('quiz-container'), classData.quiz);
+  } else {
+    if (quizSection) quizSection.remove();
+    if (quizNavLink) quizNavLink.remove();
+  }
+
+  const speakingSection = document.getElementById('section-speaking');
+  const speakingNavLink = document.querySelector('#section-menu a[href="#section-speaking"]');
+  if (classData.speakingPractice) {
+    mountSpeakingPractice(document.getElementById('speaking-practice-container'), classData);
+  } else {
+    if (speakingSection) speakingSection.remove();
+    if (speakingNavLink) speakingNavLink.remove();
+  }
 
   const priceSection = document.getElementById('section-price');
   const priceNavLink = document.querySelector('#section-menu a[href="#section-price"]');
@@ -115,6 +151,30 @@ async function initClassPage() {
     }
   }
 
+  const listenRecognizeSection = document.getElementById('section-listen-recognize');
+  const listenRecognizeNavLink = document.querySelector('#section-menu a[href="#section-listen-recognize"]');
+  if (classData.listeningRecognize && Array.isArray(classData.listeningRecognize.items) && classData.listeningRecognize.items.length) {
+    document.getElementById('listen-recognize-instructions').textContent =
+      classData.listeningRecognize.instructions ||
+      'Press Play, listen, and try to recognize the word or phrase before checking the answer.';
+    mountListeningRecognize(document.getElementById('listen-recognize-container'), classData.listeningRecognize);
+  } else {
+    if (listenRecognizeSection) listenRecognizeSection.remove();
+    if (listenRecognizeNavLink) listenRecognizeNavLink.remove();
+  }
+
+  const listenChoiceSection = document.getElementById('section-listen-choice');
+  const listenChoiceNavLink = document.querySelector('#section-menu a[href="#section-listen-choice"]');
+  if (classData.listeningChoice && Array.isArray(classData.listeningChoice.items) && classData.listeningChoice.items.length) {
+    document.getElementById('listen-choice-instructions').textContent =
+      classData.listeningChoice.instructions ||
+      'Press Play to hear a question in Spanish, then pick the correct response.';
+    mountListeningChoice(document.getElementById('listen-choice-container'), classData.listeningChoice);
+  } else {
+    if (listenChoiceSection) listenChoiceSection.remove();
+    if (listenChoiceNavLink) listenChoiceNavLink.remove();
+  }
+
   const dialoguesSection = document.getElementById('section-dialogues');
   const dialoguesNavLink = document.querySelector('#section-menu a[href="#section-dialogues"]');
   if (Array.isArray(classData.dialogues) && classData.dialogues.length) {
@@ -159,8 +219,12 @@ async function setupClassNav(currentNumber) {
     const res = await fetch('/api/classes');
     const classes = await res.json();
 
-    const prev = classes.find((c) => c.number === currentNumber - 1 && c.available);
-    const next = classes.find((c) => c.number === currentNumber + 1 && c.available);
+    // A class with no number (e.g. the Listening Revision tile) isn't part
+    // of the numbered sequence, so it has no prev/next neighbor - both sides
+    // just fall back to Home links below.
+    const hasNumber = typeof currentNumber === 'number';
+    const prev = hasNumber ? classes.find((c) => c.number === currentNumber - 1 && c.available) : null;
+    const next = hasNumber ? classes.find((c) => c.number === currentNumber + 1 && c.available) : null;
 
     const prevLink = document.getElementById('prev-class-link');
     const nextLink = document.getElementById('next-class-link');

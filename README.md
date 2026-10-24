@@ -177,6 +177,57 @@ subset of `vocab` + `passiveVocab` — it's the AI's full permitted vocabulary, 
 Per the task brief, classes 2–12 should each land as their own commit/PR once Viktoria
 provides that class's content.
 
+## Extra tiles (not part of the numbered 1-12 sequence)
+
+A tile in `data/classes/index.json` can have `"number": null` instead of an integer —
+`listening-revision` is the first example. This means:
+- It's excluded from Class N±1 prev/next navigation on every page (both there and on its
+  own page, prev/next just fall back to Home links).
+- Its home-page card and page heading show its `title` alone instead of "Class N: ...".
+- It still needs its own `data/classes/<id>.json` file and an entry in `index.json`
+  exactly like a numbered class; only `number` differs.
+- It can mix and match any of the optional section fields below (including omitting
+  `vocab`/`quiz`/`speakingPractice` entirely, which are the only three sections not
+  already optional for a *numbered* class, since every current numbered class has all
+  three) — `vocab`/`flashcards` are gated together on `vocab`, `quiz` on `quiz`, and
+  `speakingPractice`'s whole section on `speakingPractice` being present, each one
+  removing its section **and** nav link when absent, the same way `priceExercise` etc.
+  already do.
+- Where it sits in the home-page grid is just its position in the `index.json` array —
+  the grid isn't sorted by `number`, so an extra tile can be placed between two numbered
+  classes if that's where it logically belongs (e.g. `listening-revision` sits right
+  after Class 6, before Class 7's "Coming soon" placeholder).
+
+### `listening-revision` — the Listening Revision tile
+
+Two more optional per-class fields, so far only used by this tile but available to any
+class:
+
+- `listeningRecognize` — `{ instructions, items: [{ es, en, audio? }] }` for a
+  "press play, try to recognize it, then reveal the answer" drill with no scoring.
+  Engine: `public/js/listening-recognize.js` (`mountListeningRecognize`). Item order is
+  shuffled on every mount.
+- `listeningChoice` — `{ instructions, items: [{ es, choices: [...], answer, audio? }] }`
+  for a "press play to hear a question, pick the correct response from 3 choices" drill
+  (like the quiz engine, but the prompt is heard, not read) — the question text is
+  revealed after answering. Engine: `public/js/listening-choice.js`
+  (`mountListeningChoice`). Also shuffled on every mount.
+
+Both drills play `item.audio` (a real audio file) when present, otherwise fall back to
+browser text-to-speech reading `item.es` — see `playClip()` in `public/js/speech.js`.
+This means every item works out of the box with zero audio files (TTS-only), and real
+recorded clips can be dropped in later for any subset of items without touching the
+engines.
+
+**Adding real audio files:** drop them in `public/audio/listening/` (any typical web
+audio format — `.mp3` works everywhere). Then set that item's `"audio"` field to the
+file's path from the site root, e.g. `"audio": "/audio/listening/hola.mp3"`. To add
+files through Claude: attach them directly in the chat and say which Spanish
+phrase/question each one is for (by filename or by just pointing at the message), and
+they'll be saved into that folder and wired into `listening-revision.json` for you. An
+item with no `audio` field just keeps using TTS — nothing breaks if only some items get
+real recordings.
+
 ### Adding YouGlish links per vocab entry
 
 Each vocab item can carry an optional `youglish` field — a direct link to a YouGlish

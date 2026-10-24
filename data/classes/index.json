@@ -5,6 +5,7 @@
   { "id": "class-04", "number": 4, "title": "En el restaurante", "theme": "Revision of café drinks/numbers plus new restaurant content: tables, ordering food, cutlery, directions, and checking in", "available": true },
   { "id": "class-05", "number": 5, "title": "En la estación", "theme": "Buying train tickets and telling time the Spanish way: a las…, y media, menos cuarto, de la mañana/tarde/noche", "available": true },
   { "id": "class-06", "number": 6, "title": "¿Dónde está?", "theme": "Opening hours, asking where a place is, simple directions, and the bus: a las…, sigue recto, gira a la derecha/izquierda, numbers in real addresses", "available": true },
+  { "id": "listening-revision", "number": null, "title": "Listening Revision (1-6)", "theme": "Pure listening practice revising Classes 1-6: recognize words and phrases by ear, then listen to a question and pick the right response.", "available": true },
   { "id": "class-07", "number": 7, "title": "Coming soon", "theme": "", "available": false },
   { "id": "class-08", "number": 8, "title": "Coming soon", "theme": "", "available": false },
   { "id": "class-09", "number": 9, "title": "Coming soon", "theme": "", "available": false },

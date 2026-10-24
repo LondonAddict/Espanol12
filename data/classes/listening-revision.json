@@ -1,0 +1,58 @@
+{
+  "id": "listening-revision",
+  "number": null,
+  "title": "Listening Revision (Classes 1-6)",
+  "theme": "Pure listening practice revising Classes 1-6: recognize words and phrases by ear, then listen to a question and pick the right response.",
+  "listeningRecognize": {
+    "instructions": "Press Play, listen, and try to recognize the word or phrase before checking. Click \"Show answer\" whenever you're ready - there's no scoring here, just practice. The order is shuffled every time.",
+    "items": [
+      { "es": "Hola", "en": "Hello" },
+      { "es": "¿Cómo te llamas?", "en": "What's your name?" },
+      { "es": "Soy de Irlanda", "en": "I'm from Ireland" },
+      { "es": "Hasta luego", "en": "See you later" },
+      { "es": "Quería esto, por favor", "en": "I'd like this, please" },
+      { "es": "¿Cuánto cuesta?", "en": "How much does it cost?" },
+      { "es": "Tarjeta", "en": "Card" },
+      { "es": "Cinco euros", "en": "Five euros" },
+      { "es": "Un café con leche", "en": "A coffee with milk" },
+      { "es": "La cuenta, por favor", "en": "The bill, please" },
+      { "es": "Para llevar", "en": "To take away" },
+      { "es": "Son cuatro treinta", "en": "That's four thirty (€4.30)" },
+      { "es": "Una mesa para dos, por favor", "en": "A table for two, please" },
+      { "es": "¿Cuánto cuestan las croquetas?", "en": "How much do the croquetas cost?" },
+      { "es": "Al fondo, a la derecha", "en": "At the back, on the right" },
+      { "es": "Otra caña, por favor", "en": "Another small beer, please" },
+      { "es": "Un billete a Girona, por favor", "en": "A ticket to Girona, please" },
+      { "es": "Ida y vuelta", "en": "Round trip" },
+      { "es": "¿A qué hora sale el tren?", "en": "What time does the train leave?" },
+      { "es": "De la vía tres", "en": "From platform three" },
+      { "es": "Perdona, ¿dónde está el museo?", "en": "Excuse me, where is the museum?" },
+      { "es": "Sigue recto", "en": "Go straight on" },
+      { "es": "¿A qué hora cierra?", "en": "What time does it close?" },
+      { "es": "Gira a la izquierda", "en": "Turn left" }
+    ]
+  },
+  "listeningChoice": {
+    "instructions": "Press Play to hear a question in Spanish, then pick the correct response. The question is revealed after you answer, so you can check what you heard.",
+    "items": [
+      { "es": "¿Cómo te llamas?", "choices": ["Hasta luego.", "Soy Victoria.", "Soy de Irlanda."], "answer": "Soy Victoria." },
+      { "es": "¿De dónde eres?", "choices": ["Mucho gusto.", "Buenas noches.", "Soy de Irlanda."], "answer": "Soy de Irlanda." },
+      { "es": "¿Qué tal?", "choices": ["Soy de Irlanda.", "Bien, gracias. ¿Y tú?", "Hasta luego."], "answer": "Bien, gracias. ¿Y tú?" },
+      { "es": "¿Cuánto cuesta?", "choices": ["Tarjeta.", "Cinco euros.", "Vale."], "answer": "Cinco euros." },
+      { "es": "¿Tarjeta o efectivo?", "choices": ["Cinco euros.", "Esto.", "Tarjeta."], "answer": "Tarjeta." },
+      { "es": "¿Qué te pongo?", "choices": ["Gracias.", "Quería esto, por favor.", "Adiós."], "answer": "Quería esto, por favor." },
+      { "es": "¿Aquí o para llevar?", "choices": ["Sí, por favor.", "Nada más, gracias.", "Para llevar."], "answer": "Para llevar." },
+      { "es": "¿Algo más?", "choices": ["Para llevar.", "No, nada más, gracias.", "Aquí tienes."], "answer": "No, nada más, gracias." },
+      { "es": "¿Tarjeta o efectivo?", "choices": ["Nada más, gracias.", "Aquí tienes.", "Tarjeta, por favor."], "answer": "Tarjeta, por favor." },
+      { "es": "¿Dónde está el baño?", "choices": ["Son ocho noventa.", "Al fondo, a la derecha.", "Sí, ahora mismo."], "answer": "Al fondo, a la derecha." },
+      { "es": "¿Estás listo?", "choices": ["Otra, por favor.", "Al fondo, a la derecha.", "Cinco minutos más, por favor."], "answer": "Cinco minutos más, por favor." },
+      { "es": "¿Todo bien?", "choices": ["Al fondo, a la derecha.", "Sí, todo muy bien, gracias.", "Perdona, ¿me traes un tenedor?"], "answer": "Sí, todo muy bien, gracias." },
+      { "es": "¿A qué hora sale el tren?", "choices": ["Son dieciocho euros.", "Sale a las nueve y media.", "De la vía tres."], "answer": "Sale a las nueve y media." },
+      { "es": "¿De qué vía sale?", "choices": ["Ida y vuelta, por favor.", "Son dieciocho euros.", "De la vía tres."], "answer": "De la vía tres." },
+      { "es": "¿Ida y vuelta o solo ida?", "choices": ["De la vía tres.", "Ida y vuelta, por favor.", "Gracias."], "answer": "Ida y vuelta, por favor." },
+      { "es": "¿Cómo llego?", "choices": ["Sí, el ciento cuarenta y dos.", "Sigue recto. Gira a la izquierda. La entrada está a la derecha.", "Abre a las diez y cierra a las ocho."], "answer": "Sigue recto. Gira a la izquierda. La entrada está a la derecha." },
+      { "es": "¿Hay un autobús?", "choices": ["Está en la calle Valencia, doscientos ochenta y cuatro.", "Lo siento, no sé.", "Sí, el ciento cuarenta y dos."], "answer": "Sí, el ciento cuarenta y dos." },
+      { "es": "¿A qué hora abre?", "choices": ["Está cerrado.", "Gira a la derecha.", "Abre a las diez."], "answer": "Abre a las diez." }
+    ]
+  }
+}

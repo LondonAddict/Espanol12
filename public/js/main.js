@@ -10,7 +10,9 @@ async function loadClasses() {
 }
 
 function renderCard(cls) {
-  const numberLabel = `Class ${cls.number}`;
+  // A tile with no number (e.g. the Listening Revision) isn't part of the
+  // numbered 1-12 sequence, so it gets a plain label instead of "Class N".
+  const numberLabel = typeof cls.number === 'number' ? `Class ${cls.number}` : 'Extra';
   if (!cls.available) {
     return `
       <div class="class-card locked">
