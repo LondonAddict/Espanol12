@@ -7,6 +7,8 @@
     "instructions": "Press Play, listen, and try to recognize the word or phrase before checking. Click \"Show answer\" whenever you're ready - there's no scoring here, just practice. The order is shuffled every time.",
     "items": [
       { "es": "¡Qué bien!", "en": "That's great! / How nice!", "audio": "/audio/listening/que-bien-1.mp3" },
+      { "es": "No hay.", "en": "There isn't any / There's none left.", "audio": "/audio/listening/no-hay-1.mp3" },
+      { "es": "Lo siento.", "en": "I'm sorry.", "audio": "/audio/listening/lo-siento-1.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-1.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-2.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-3.mp3" },
