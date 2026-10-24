@@ -10,6 +10,7 @@
       { "es": "No hay.", "en": "There isn't any / There's none left.", "audio": "/audio/listening/no-hay-1.mp3" },
       { "es": "Lo siento.", "en": "I'm sorry.", "audio": "/audio/listening/lo-siento-1.mp3" },
       { "es": "¿Puedes repetir, por favor?", "en": "Can you repeat that, please?", "audio": "/audio/listening/puedes-repetir-1.mp3" },
+      { "es": "Sesenta y siete", "en": "67", "audio": "/audio/listening/numero-67-1.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-1.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-2.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-3.mp3" },
