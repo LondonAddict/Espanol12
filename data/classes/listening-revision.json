@@ -48,6 +48,8 @@
       { "es": "Tarjeta", "en": "Card", "audio": "/audio/listening/tarjeta-1.mp3" },
       { "es": "Cinco euros", "en": "Five euros" },
       { "es": "Un café con leche", "en": "A coffee with milk", "audio": "/audio/listening/un-cafe-con-leche-1.mp3" },
+      { "es": "café con leche", "en": "coffee with milk", "audio": "/audio/listening/cafe-con-leche-1.mp3" },
+      { "es": "leche desnatada", "en": "skimmed milk", "audio": "/audio/listening/leche-desnatada-1.mp3" },
       { "es": "La cuenta, por favor", "en": "The bill, please", "audio": "/audio/listening/la-cuenta-por-favor-1.mp3" },
       { "es": "No, gracias. La cuenta, por favor.", "en": "No, thanks. The bill, please.", "audio": "/audio/listening/no-gracias-la-cuenta-1.mp3" },
       { "es": "¿Cuánto vale?", "en": "How much is it?", "audio": "/audio/listening/cuanto-vale-1.mp3" },
