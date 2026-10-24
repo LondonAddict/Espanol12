@@ -47,7 +47,7 @@
       { "es": "Son cuatro treinta", "en": "That's four thirty (€4.30)" },
       { "es": "Una mesa para dos, por favor", "en": "A table for two, please" },
       { "es": "¿Cuánto cuestan las croquetas?", "en": "How much do the croquetas cost?" },
-      { "es": "Al fondo, a la derecha", "en": "At the back, on the right" },
+      { "es": "El baño está al fondo a la derecha.", "en": "The bathroom is at the back, on the right.", "audio": "/audio/listening/bano-al-fondo-derecha-1.mp3" },
       { "es": "Otra caña, por favor", "en": "Another small beer, please" },
       { "es": "Un billete a Girona, por favor", "en": "A ticket to Girona, please" },
       { "es": "Ida y vuelta", "en": "Round trip", "audio": "/audio/listening/ida-y-vuelta-1.mp3" },
@@ -56,7 +56,7 @@
       { "es": "¿A qué hora sale el tren?", "en": "What time does the train leave?" },
       { "es": "De la vía tres", "en": "From platform three" },
       { "es": "Perdona, ¿dónde está el museo?", "en": "Excuse me, where is the museum?" },
-      { "es": "Sigue recto", "en": "Go straight on" },
+      { "es": "Sigue recto", "en": "Go straight on", "audio": "/audio/listening/sigue-recto-1.mp3" },
       { "es": "¿A qué hora cierra?", "en": "What time does it close?" },
       { "es": "Gira a la izquierda", "en": "Turn left" }
     ]
