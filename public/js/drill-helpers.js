@@ -14,6 +14,18 @@ function shuffleCopy(arr) {
   return copy;
 }
 
+/**
+ * Shuffles items but keeps every item with a real recording (item.audio)
+ * ahead of every TTS-only item, so real audio always plays first and
+ * generated speech is left for the end. Each group is still shuffled
+ * independently for variety within itself.
+ */
+function shuffleRealAudioFirst(arr) {
+  const withAudio = shuffleCopy(arr.filter((item) => item.audio));
+  const withoutAudio = shuffleCopy(arr.filter((item) => !item.audio));
+  return withAudio.concat(withoutAudio);
+}
+
 function escapeHtmlListen(str) {
   const div = document.createElement('div');
   div.textContent = str || '';

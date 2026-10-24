@@ -4,12 +4,14 @@
  * Listen & Choose, the student plays a clip of a Spanish question - but
  * instead of picking from multiple choice, they come up with their own
  * spoken/typed-in-their-head answer first, then reveal one or two example
- * answers to check themselves against. No scoring, pure practice. Item
- * order is shuffled on each mount; the numbered row lets a student jump
- * straight to a specific item instead of only moving via Next.
+ * answers to check themselves against. No scoring, pure practice. Items
+ * with a real recording are shuffled and played first, then TTS-only items
+ * (shuffled among themselves) fill out the rest - see
+ * shuffleRealAudioFirst() in drill-helpers.js. The numbered row lets a
+ * student jump straight to a specific item instead of only moving via Next.
  */
 function mountListeningAnswer(container, exerciseData) {
-  const items = shuffleCopy((exerciseData && exerciseData.items) || []);
+  const items = shuffleRealAudioFirst((exerciseData && exerciseData.items) || []);
   if (!items.length) {
     container.innerHTML = '<p>No listening items available yet.</p>';
     return;

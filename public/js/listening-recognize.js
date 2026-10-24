@@ -4,12 +4,14 @@
  * time (a real audio file if `audio` is set, otherwise browser TTS reading
  * `es`) and lets the student reveal the answer (Spanish text + English
  * translation) whenever they're ready to check themselves - there's no
- * right/wrong scoring, this is pure recognition practice. Item order is
- * shuffled on each mount; the numbered row lets a student jump straight to a
+ * right/wrong scoring, this is pure recognition practice. Items with a real
+ * recording are shuffled and played first, then TTS-only items (shuffled
+ * among themselves) fill out the rest - see shuffleRealAudioFirst() in
+ * drill-helpers.js. The numbered row lets a student jump straight to a
  * specific item instead of only moving via Next.
  */
 function mountListeningRecognize(container, exerciseData) {
-  const items = shuffleCopy((exerciseData && exerciseData.items) || []);
+  const items = shuffleRealAudioFirst((exerciseData && exerciseData.items) || []);
   if (!items.length) {
     container.innerHTML = '<p>No listening items available yet.</p>';
     return;

@@ -12,6 +12,8 @@
       { "es": "¿Puedes repetir, por favor?", "en": "Can you repeat that, please?", "audio": "/audio/listening/puedes-repetir-1.mp3" },
       { "es": "Sesenta y siete", "en": "67", "audio": "/audio/listening/numero-67-1.mp3" },
       { "es": "Quinientos cincuenta y cinco", "en": "555", "audio": "/audio/listening/numero-555-1.mp3" },
+      { "es": "Nada más.", "en": "Nothing else.", "audio": "/audio/listening/nada-mas-1.mp3" },
+      { "es": "¿Dónde está el bar?", "en": "Where is the bar?", "audio": "/audio/listening/donde-esta-el-bar-1.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-1.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-2.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-3.mp3" },

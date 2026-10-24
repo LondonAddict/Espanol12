@@ -5,12 +5,14 @@
  * `audio` is set, otherwise browser TTS) and picks the correct response from
  * three Spanish `choices` - like the quiz engine, but the prompt is heard
  * rather than read. The question text is revealed after answering so the
- * student can confirm what they heard. Item order is shuffled on each mount;
- * the numbered row lets a student jump straight to a specific item instead
- * of only moving via Next.
+ * student can confirm what they heard. Items with a real recording are
+ * shuffled and played first, then TTS-only items (shuffled among
+ * themselves) fill out the rest - see shuffleRealAudioFirst() in
+ * drill-helpers.js. The numbered row lets a student jump straight to a
+ * specific item instead of only moving via Next.
  */
 function mountListeningChoice(container, exerciseData) {
-  const items = shuffleCopy((exerciseData && exerciseData.items) || []);
+  const items = shuffleRealAudioFirst((exerciseData && exerciseData.items) || []);
   if (!items.length) {
     container.innerHTML = '<p>No listening items available yet.</p>';
     return;
