@@ -212,12 +212,32 @@ class:
   (like the quiz engine, but the prompt is heard, not read) — the question text is
   revealed after answering. Engine: `public/js/listening-choice.js`
   (`mountListeningChoice`). Also shuffled on every mount.
+- `listeningAnswer` — `{ instructions, items: [{ es, exampleAnswers: [...], audio? }] }`
+  for a "press play to hear a question, come up with your own answer, then reveal one
+  or two example answers to check yourself against" drill — no multiple choice, no
+  scoring, just practice producing the response yourself. Use only questions where the
+  student is the one being asked (i.e. directed at the customer/tourist role they
+  practiced, not ones the student themselves asks in the dialogues) since there's no
+  one else in this drill to "be" the other role. Engine: `public/js/listening-answer.js`
+  (`mountListeningAnswer`). Also shuffled on every mount.
 
-Both drills play `item.audio` (a real audio file) when present, otherwise fall back to
-browser text-to-speech reading `item.es` — see `playClip()` in `public/js/speech.js`.
-This means every item works out of the box with zero audio files (TTS-only), and real
-recorded clips can be dropped in later for any subset of items without touching the
-engines.
+All three drills play `item.audio` (a real audio file) when present, otherwise fall
+back to browser text-to-speech reading `item.es` — see `playClip()` in
+`public/js/speech.js`. This means every item works out of the box with zero audio files
+(TTS-only), and real recorded clips can be dropped in later for any subset of items
+without touching the engines. **When a real recording arrives for a phrase that
+currently only has a TTS item (anywhere on the page, in any of the three drills),
+replace that TTS item in place (add the `audio` field to it) rather than leaving a
+redundant TTS-only duplicate alongside it** — real audio is strictly better than TTS for
+the same phrase. A phrase with multiple different recordings (e.g. several people's
+takes) is not a duplicate; keep each as its own item so students hear multiple voices.
+
+All three also share `public/js/drill-helpers.js`: `shuffleCopy` (the per-mount
+shuffle), `escapeHtmlListen`/`escapeAttrListen`, and the **jump row**
+(`renderJumpRow`/`wireJumpRow`) — a row of numbered buttons above each drill's current
+item/question that lets a student jump straight to a specific one (e.g. "I did 1-10
+already, let me jump to 11") instead of only moving sequentially via Next. Include
+`drill-helpers.js` before any of the three listening-*.js files in `class.html`.
 
 **Adding real audio files:** drop them in `public/audio/listening/` (any typical web
 audio format — `.mp3` works everywhere). Then set that item's `"audio"` field to the

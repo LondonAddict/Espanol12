@@ -5,7 +5,8 @@
  * `es`) and lets the student reveal the answer (Spanish text + English
  * translation) whenever they're ready to check themselves - there's no
  * right/wrong scoring, this is pure recognition practice. Item order is
- * shuffled on each mount.
+ * shuffled on each mount; the numbered row lets a student jump straight to a
+ * specific item instead of only moving via Next.
  */
 function mountListeningRecognize(container, exerciseData) {
   const items = shuffleCopy((exerciseData && exerciseData.items) || []);
@@ -21,6 +22,7 @@ function mountListeningRecognize(container, exerciseData) {
 
     container.innerHTML = `
       <p class="quiz-progress">Item ${index + 1} / ${items.length}</p>
+      ${renderJumpRow(items.length, index)}
       <div class="price-prompt">
         <button id="lr-play">🔊 Play</button>
       </div>
@@ -30,6 +32,11 @@ function mountListeningRecognize(container, exerciseData) {
       <div class="price-feedback" id="lr-answer" hidden></div>
       <button id="lr-next" class="secondary">${index === items.length - 1 ? 'See Results' : 'Next →'}</button>
     `;
+
+    wireJumpRow(container, (i) => {
+      index = i;
+      renderItem();
+    });
 
     const playBtn = container.querySelector('#lr-play');
     const revealBtn = container.querySelector('#lr-reveal');
@@ -67,19 +74,4 @@ function mountListeningRecognize(container, exerciseData) {
   }
 
   renderItem();
-}
-
-function shuffleCopy(arr) {
-  const copy = arr.slice();
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
-}
-
-function escapeHtmlListen(str) {
-  const div = document.createElement('div');
-  div.textContent = str || '';
-  return div.innerHTML;
 }

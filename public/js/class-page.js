@@ -175,6 +175,18 @@ async function initClassPage() {
     if (listenChoiceNavLink) listenChoiceNavLink.remove();
   }
 
+  const listenAnswerSection = document.getElementById('section-listen-answer');
+  const listenAnswerNavLink = document.querySelector('#section-menu a[href="#section-listen-answer"]');
+  if (classData.listeningAnswer && Array.isArray(classData.listeningAnswer.items) && classData.listeningAnswer.items.length) {
+    document.getElementById('listen-answer-instructions').textContent =
+      classData.listeningAnswer.instructions ||
+      'Press Play to hear a question in Spanish, come up with your own answer, then reveal an example to check yourself.';
+    mountListeningAnswer(document.getElementById('listen-answer-container'), classData.listeningAnswer);
+  } else {
+    if (listenAnswerSection) listenAnswerSection.remove();
+    if (listenAnswerNavLink) listenAnswerNavLink.remove();
+  }
+
   const dialoguesSection = document.getElementById('section-dialogues');
   const dialoguesNavLink = document.querySelector('#section-menu a[href="#section-dialogues"]');
   if (Array.isArray(classData.dialogues) && classData.dialogues.length) {

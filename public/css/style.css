@@ -298,6 +298,24 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .price-feedback.correct { color: var(--color-accent); }
 .price-feedback.incorrect { color: var(--color-primary); }
 
+/* Listening drills - jump-to-item row */
+.jump-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.jump-btn {
+  min-width: 2.4rem;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.9rem;
+}
+.jump-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
 /* Timetable (speaking practice reference) */
 #timetable-container, #places-table-container { margin-bottom: 1.25rem; }
 #timetable-container h3, #places-table-container h3 { margin: 0 0 0.5rem; font-size: 1rem; color: var(--color-muted); }
