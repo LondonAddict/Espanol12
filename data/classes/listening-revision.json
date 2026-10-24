@@ -77,7 +77,7 @@
       { "es": "¿Todo bien?", "choices": ["Al fondo, a la derecha.", "Sí, todo muy bien, gracias.", "Perdona, ¿me traes un tenedor?"], "answer": "Sí, todo muy bien, gracias.", "audio": "/audio/listening/todo-bien-1.mp3" },
       { "es": "¿A qué hora sale el tren?", "choices": ["Son dieciocho euros.", "Sale a las nueve y media.", "De la vía tres."], "answer": "Sale a las nueve y media." },
       { "es": "¿De qué vía sale?", "choices": ["Ida y vuelta, por favor.", "Son dieciocho euros.", "De la vía tres."], "answer": "De la vía tres." },
-      { "es": "¿Ida y vuelta o solo ida?", "choices": ["De la vía tres.", "Ida y vuelta, por favor.", "Gracias."], "answer": "Ida y vuelta, por favor." },
+      { "es": "¿El billete es de ida y vuelta, o sólo ida?", "choices": ["De la vía tres.", "Ida y vuelta, por favor.", "Gracias."], "answer": "Ida y vuelta, por favor.", "audio": "/audio/listening/billete-ida-vuelta-o-solo-ida-1.mp3" },
       { "es": "¿Cómo llego?", "choices": ["Sí, el ciento cuarenta y dos.", "Sigue recto. Gira a la izquierda. La entrada está a la derecha.", "Abre a las diez y cierra a las ocho."], "answer": "Sigue recto. Gira a la izquierda. La entrada está a la derecha." },
       { "es": "¿A qué hora abre?", "choices": ["Está cerrado.", "Gira a la derecha.", "Abre a las diez."], "answer": "Abre a las diez.", "audio": "/audio/listening/a-que-hora-abre-1.mp3" }
     ]
@@ -95,7 +95,7 @@
       { "es": "¿Tenéis reserva?", "exampleAnswers": ["No.", "Sí."] },
       { "es": "¿Queréis agua?", "exampleAnswers": ["Sí, agua sin gas, por favor."] },
       { "es": "¿Estáis listos?", "exampleAnswers": ["Cinco minutos más, por favor."] },
-      { "es": "¿Ida y vuelta o solo ida?", "exampleAnswers": ["Ida y vuelta, por favor.", "Solo ida, por favor."] }
+      { "es": "¿El billete es de ida y vuelta, o sólo ida?", "exampleAnswers": ["Ida y vuelta, por favor.", "Solo ida, por favor."], "audio": "/audio/listening/billete-ida-vuelta-o-solo-ida-1.mp3" }
     ]
   }
 }
