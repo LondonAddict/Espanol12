@@ -57,8 +57,7 @@
       { "es": "De la vía tres", "en": "From platform three" },
       { "es": "Perdona, ¿dónde está el museo?", "en": "Excuse me, where is the museum?" },
       { "es": "Sigue recto", "en": "Go straight on", "audio": "/audio/listening/sigue-recto-1.mp3" },
-      { "es": "¿A qué hora cierra?", "en": "What time does it close?" },
-      { "es": "Gira a la izquierda", "en": "Turn left" }
+      { "es": "¿A qué hora cierra la tienda?", "en": "What time does the shop close?", "audio": "/audio/listening/a-que-hora-cierra-tienda-1.mp3" }
     ]
   },
   "listeningChoice": {
