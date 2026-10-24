@@ -6,6 +6,7 @@
   "listeningRecognize": {
     "instructions": "Press Play, listen, and try to recognize the word or phrase before checking. Click \"Show answer\" whenever you're ready - there's no scoring here, just practice. The order is shuffled every time.",
     "items": [
+      { "es": "¡Qué bien!", "en": "That's great! / How nice!", "audio": "/audio/listening/que-bien-1.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-1.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-2.mp3" },
       { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-3.mp3" },
@@ -32,6 +33,7 @@
       { "es": "¿Cuánto cuesta esto?", "en": "How much does this cost?", "audio": "/audio/listening/cuanto-cuesta-esto-1.mp3" },
       { "es": "¿Cuánto cuesta esto?", "en": "How much does this cost?", "audio": "/audio/listening/cuanto-cuesta-esto-2.mp3" },
       { "es": "¿Quieres agua?", "en": "Do you want water?", "audio": "/audio/listening/quieres-agua-1.mp3" },
+      { "es": "¿Quieres agua?", "en": "Do you want water?", "audio": "/audio/listening/quieres-agua-2.mp3" },
       { "es": "¿Para aquí o para llevar?", "en": "For here or to take away?", "audio": "/audio/listening/para-aqui-o-para-llevar-1.mp3" },
       { "es": "Quería esto, por favor", "en": "I'd like this, please" },
       { "es": "¿Cuánto cuesta?", "en": "How much does it cost?", "audio": "/audio/listening/cuanto-cuesta-1.mp3" },
@@ -93,8 +95,6 @@
       { "es": "¿Aquí o para llevar?", "exampleAnswers": ["Para llevar.", "Aquí."] },
       { "es": "¿Algo más?", "exampleAnswers": ["No, nada más, gracias."], "audio": "/audio/listening/algo-mas-1.mp3" },
       { "es": "¿Tenéis reserva?", "exampleAnswers": ["No.", "Sí."] },
-      { "es": "¿Queréis agua?", "exampleAnswers": ["Sí, agua sin gas, por favor."] },
-      { "es": "¿Estáis listos?", "exampleAnswers": ["Cinco minutos más, por favor."] },
       { "es": "¿El billete es de ida y vuelta, o sólo ida?", "exampleAnswers": ["Ida y vuelta, por favor.", "Solo ida, por favor."], "audio": "/audio/listening/billete-ida-vuelta-o-solo-ida-1.mp3" }
     ]
   }
