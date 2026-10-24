@@ -6,6 +6,14 @@
   "listeningRecognize": {
     "instructions": "Press Play, listen, and try to recognize the word or phrase before checking. Click \"Show answer\" whenever you're ready - there's no scoring here, just practice. The order is shuffled every time.",
     "items": [
+      { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-1.mp3" },
+      { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-2.mp3" },
+      { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-3.mp3" },
+      { "es": "¡Hola! ¿Qué tal?", "en": "Hi! How's it going?", "audio": "/audio/listening/hola-que-tal-4.mp3" },
+      { "es": "¿Cómo estás?", "en": "How are you?", "audio": "/audio/listening/como-estas-1.mp3" },
+      { "es": "¿Cómo estás?", "en": "How are you?", "audio": "/audio/listening/como-estas-2.mp3" },
+      { "es": "¡Hola! ¿Cómo estás? ¿Todo bien?", "en": "Hi! How are you? Everything okay?", "audio": "/audio/listening/hola-como-estas-todo-bien-1.mp3" },
+      { "es": "¡Hola! ¿Cómo estás? ¿Todo bien?", "en": "Hi! How are you? Everything okay?", "audio": "/audio/listening/hola-como-estas-todo-bien-2.mp3" },
       { "es": "Hola", "en": "Hello" },
       { "es": "¿Cómo te llamas?", "en": "What's your name?" },
       { "es": "Soy de Irlanda", "en": "I'm from Ireland" },
