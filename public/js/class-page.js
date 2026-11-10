@@ -39,6 +39,12 @@ async function initClassPage() {
     : classData.title;
   document.getElementById('class-theme').textContent = classData.theme || '';
 
+  const handoutBlock = document.getElementById('class-handout-block');
+  if (classData.handoutUrl) {
+    document.getElementById('class-handout-link').href = classData.handoutUrl;
+    handoutBlock.hidden = false;
+  }
+
   const speechSupported = isSpeechSynthesisSupported();
 
   const vocabSection = document.getElementById('section-vocab');

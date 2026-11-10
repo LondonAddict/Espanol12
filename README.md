@@ -161,6 +161,11 @@ chat, which will show a friendly "not configured yet" message instead of crashin
      mount block in `class-page.js` (see Class 6) rather than reusing `timeExercise`'s
      ids, so a class can have both drills side by side if it ever needs to. Omit
      entirely if a class has no opening-hours drill.
+   - `handoutUrl` — a path to a PDF of that class's printed handout (e.g.
+     `"/handouts/class-08.pdf"`, with the actual file saved to
+     `public/handouts/class-08.pdf`), shown as a "📄 Download class handout
+     (PDF)" link right under the class title/theme — for a student who
+     missed the class. Omit entirely if a class has no handout PDF on file.
 2. Update that class's entry in `data/classes/index.json`: set `title`, `theme`, and
    `available: true`.
 3. Commit and push — no other frontend code changes needed.
