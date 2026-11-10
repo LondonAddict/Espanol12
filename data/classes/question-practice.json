@@ -5,6 +5,434 @@
   "theme": "No class next week - practice here instead: listen to a question, think of your own answer, then reveal the text and/or an example answer as hints if you need them.",
   "listeningAnswer": {
     "instructions": "Press Play to hear a question in Spanish. Try to answer it yourself first (out loud is best!) - then reveal the question text and/or an example answer separately, whichever hint you need.",
-    "items": []
+    "items": [
+      {
+        "es": "¿Buscas el baño?",
+        "exampleAnswers": [
+          "Sí, busco el baño."
+        ],
+        "audio": "/audio/question-practice/buscas-el-bano-1.mp3"
+      },
+      {
+        "es": "¿De dónde eres?",
+        "exampleAnswers": [
+          "Soy de Irlanda."
+        ],
+        "audio": "/audio/question-practice/de-donde-eres-1.mp3"
+      },
+      {
+        "es": "¿De dónde eres?",
+        "exampleAnswers": [
+          "Soy de Irlanda."
+        ],
+        "audio": "/audio/question-practice/de-donde-eres-2.mp3"
+      },
+      {
+        "es": "¿Hablas español?",
+        "exampleAnswers": [
+          "Hablo un poco de español."
+        ],
+        "audio": "/audio/question-practice/hablas-espanol-1.mp3"
+      },
+      {
+        "es": "¿Hablas español?",
+        "exampleAnswers": [
+          "Hablo un poco de español."
+        ],
+        "audio": "/audio/question-practice/hablas-espanol-2.mp3"
+      },
+      {
+        "es": "¿Hablas inglés?",
+        "exampleAnswers": [
+          "Sí, hablo inglés."
+        ],
+        "audio": "/audio/question-practice/hablas-ingles-1.mp3"
+      },
+      {
+        "es": "¿Hablas inglés?",
+        "exampleAnswers": [
+          "Sí, hablo inglés."
+        ],
+        "audio": "/audio/question-practice/hablas-ingles-2.mp3"
+      },
+      {
+        "es": "¡Hola! ¿Cómo te llamas?",
+        "exampleAnswers": [
+          "Soy Victoria."
+        ],
+        "audio": "/audio/question-practice/hola-como-te-llamas-1.mp3"
+      },
+      {
+        "es": "¡Hola! ¿Cómo te llamas?",
+        "exampleAnswers": [
+          "Soy Victoria."
+        ],
+        "audio": "/audio/question-practice/hola-como-te-llamas-2.mp3"
+      },
+      {
+        "es": "¡Hola! ¿Cómo te llamas?",
+        "exampleAnswers": [
+          "Soy Victoria."
+        ],
+        "audio": "/audio/question-practice/hola-como-te-llamas-3.mp3"
+      },
+      {
+        "es": "¿Qué te gusta hacer?",
+        "exampleAnswers": [
+          "Me gusta caminar."
+        ],
+        "audio": "/audio/question-practice/que-te-gusta-hacer-1.mp3"
+      },
+      {
+        "es": "¿Qué te gusta hacer?",
+        "exampleAnswers": [
+          "Me gusta caminar."
+        ],
+        "audio": "/audio/question-practice/que-te-gusta-hacer-2.mp3"
+      },
+      {
+        "es": "¿Qué zumo de naranja te gusta?",
+        "exampleAnswers": [
+          "Me gusta el zumo de naranja."
+        ],
+        "audio": "/audio/question-practice/que-zumo-de-naranja-te-gusta-1.mp3"
+      },
+      {
+        "es": "¿Tarjeta o efectivo?",
+        "exampleAnswers": [
+          "Tarjeta."
+        ],
+        "audio": "/audio/question-practice/tarjeta-o-efectivo-1.mp3"
+      },
+      {
+        "es": "¿Te gusta aquí?",
+        "exampleAnswers": [
+          "Sí, me gusta aquí."
+        ],
+        "audio": "/audio/question-practice/te-gusta-aqui-1.mp3"
+      },
+      {
+        "es": "¿Te gusta el café negro o con leche?",
+        "exampleAnswers": [
+          "Me gusta el café con leche."
+        ],
+        "audio": "/audio/question-practice/te-gusta-el-cafe-negro-o-con-leche-1.mp3"
+      },
+      {
+        "es": "¿Te gusta la pizza?",
+        "exampleAnswers": [
+          "Sí, me gusta la pizza."
+        ],
+        "audio": "/audio/question-practice/te-gusta-la-pizza-1.mp3"
+      },
+      {
+        "es": "¿Buscas el metro?",
+        "exampleAnswers": [
+          "Sí, busco el metro."
+        ],
+        "audio": "/audio/question-practice/buscas-el-metro-1.mp3"
+      },
+      {
+        "es": "¿Buscas un restaurante de tapas?",
+        "exampleAnswers": [
+          "Sí, busco un restaurante de tapas."
+        ],
+        "audio": "/audio/question-practice/buscas-un-restaurante-de-tapas-1.mp3"
+      },
+      {
+        "es": "¿Caminas mucho?",
+        "exampleAnswers": [
+          "Sí, camino mucho."
+        ],
+        "audio": "/audio/question-practice/caminas-mucho-1.mp3"
+      },
+      {
+        "es": "¿Caminas por la mañana?",
+        "exampleAnswers": [
+          "Sí, camino por la mañana."
+        ],
+        "audio": "/audio/question-practice/caminas-por-la-manana-1.mp3"
+      },
+      {
+        "es": "¿Estudias español?",
+        "exampleAnswers": [
+          "Sí, estudio español."
+        ],
+        "audio": "/audio/question-practice/estudias-espanol-1.mp3"
+      },
+      {
+        "es": "¿Estudias mucho?",
+        "exampleAnswers": [
+          "Sí, estudio mucho."
+        ],
+        "audio": "/audio/question-practice/estudias-mucho-1.mp3"
+      },
+      {
+        "es": "¿Hablas francés?",
+        "exampleAnswers": [
+          "No, no hablo francés."
+        ],
+        "audio": "/audio/question-practice/hablas-frances-1.mp3"
+      },
+      {
+        "es": "¿Hablas irlandés?",
+        "exampleAnswers": [
+          "No, no hablo irlandés."
+        ],
+        "audio": "/audio/question-practice/hablas-irlandes-1.mp3"
+      },
+      {
+        "es": "¿Hablas mucho por la mañana?",
+        "exampleAnswers": [
+          "No, hablo poco por la mañana."
+        ],
+        "audio": "/audio/question-practice/hablas-mucho-por-la-manana-1.mp3"
+      },
+      {
+        "es": "¿Hay una talla más pequeña?",
+        "exampleAnswers": [
+          "Sí, hay una talla más pequeña."
+        ],
+        "audio": "/audio/question-practice/hay-una-talla-mas-pequena-1.mp3"
+      },
+      {
+        "es": "¿Necesitas un café?",
+        "exampleAnswers": [
+          "Sí, necesito un café."
+        ],
+        "audio": "/audio/question-practice/necesitas-un-cafe-1.mp3"
+      },
+      {
+        "es": "¿Necesitas una bolsa más grande?",
+        "exampleAnswers": [
+          "Sí, necesito una bolsa más grande."
+        ],
+        "audio": "/audio/question-practice/necesitas-una-bolsa-mas-grande-1.mp3"
+      },
+      {
+        "es": "¿Necesitas una bolsa?",
+        "exampleAnswers": [
+          "Sí, necesito una bolsa."
+        ],
+        "audio": "/audio/question-practice/necesitas-una-bolsa-1.mp3"
+      },
+      {
+        "es": "¿Necesitas una mesa para dos?",
+        "exampleAnswers": [
+          "Sí, necesito una mesa para dos."
+        ],
+        "audio": "/audio/question-practice/necesitas-una-mesa-para-dos-1.mp3"
+      },
+      {
+        "es": "¿Necesitas una talla más grande?",
+        "exampleAnswers": [
+          "Sí, necesito una talla más grande."
+        ],
+        "audio": "/audio/question-practice/necesitas-una-talla-mas-grande-1.mp3"
+      },
+      {
+        "es": "¿Necesitas vacaciones?",
+        "exampleAnswers": [
+          "Sí, necesito vacaciones."
+        ],
+        "audio": "/audio/question-practice/necesitas-vacaciones-1.mp3"
+      },
+      {
+        "es": "¿Qué talla necesitas?",
+        "exampleAnswers": [
+          "Necesito una L."
+        ],
+        "audio": "/audio/question-practice/que-talla-necesitas-1.mp3"
+      },
+      {
+        "es": "¿Te gusta caminar?",
+        "exampleAnswers": [
+          "Sí, me gusta caminar."
+        ],
+        "audio": "/audio/question-practice/te-gusta-caminar-1.mp3"
+      },
+      {
+        "es": "¿Te gusta correr?",
+        "exampleAnswers": [
+          "Sí, me gusta correr."
+        ],
+        "audio": "/audio/question-practice/te-gusta-correr-1.mp3"
+      },
+      {
+        "es": "¿Te gusta el cine?",
+        "exampleAnswers": [
+          "Sí, me gusta el cine."
+        ],
+        "audio": "/audio/question-practice/te-gusta-el-cine-1.mp3"
+      },
+      {
+        "es": "¿Te gusta el golf?",
+        "exampleAnswers": [
+          "Sí, me gusta el golf."
+        ],
+        "audio": "/audio/question-practice/te-gusta-el-golf-1.mp3"
+      },
+      {
+        "es": "¿Te gusta el hotel en la montaña?",
+        "exampleAnswers": [
+          "Sí, me gusta el hotel en la montaña."
+        ],
+        "audio": "/audio/question-practice/te-gusta-el-hotel-en-la-montana-1.mp3"
+      },
+      {
+        "es": "¿Te gusta el pilates?",
+        "exampleAnswers": [
+          "Sí, me gusta el pilates."
+        ],
+        "audio": "/audio/question-practice/te-gusta-el-pilates-1.mp3"
+      },
+      {
+        "es": "¿Te gusta el vino tinto o blanco?",
+        "exampleAnswers": [
+          "Me gusta el vino tinto."
+        ],
+        "audio": "/audio/question-practice/te-gusta-el-vino-tinto-o-blanco-1.mp3"
+      },
+      {
+        "es": "¿Te gusta el vino?",
+        "exampleAnswers": [
+          "Sí, me gusta el vino."
+        ],
+        "audio": "/audio/question-practice/te-gusta-el-vino-1.mp3"
+      },
+      {
+        "es": "¿Te gusta estudiar?",
+        "exampleAnswers": [
+          "Sí, me gusta estudiar."
+        ],
+        "audio": "/audio/question-practice/te-gusta-estudiar-1.mp3"
+      },
+      {
+        "es": "¿Te gusta hacer senderismo?",
+        "exampleAnswers": [
+          "Sí, me gusta hacer senderismo."
+        ],
+        "audio": "/audio/question-practice/te-gusta-hacer-senderismo-1.mp3"
+      },
+      {
+        "es": "¿Te gusta ir de compras?",
+        "exampleAnswers": [
+          "Sí, me gusta ir de compras."
+        ],
+        "audio": "/audio/question-practice/te-gusta-ir-de-compras-1.mp3"
+      },
+      {
+        "es": "¿Te gusta la paella?",
+        "exampleAnswers": [
+          "Sí, me gusta la paella."
+        ],
+        "audio": "/audio/question-practice/te-gusta-la-paella-1.mp3"
+      },
+      {
+        "es": "¿Te gusta leer?",
+        "exampleAnswers": [
+          "Sí, me gusta leer."
+        ],
+        "audio": "/audio/question-practice/te-gusta-leer-1.mp3"
+      },
+      {
+        "es": "¿Te gusta pescar?",
+        "exampleAnswers": [
+          "Sí, me gusta pescar."
+        ],
+        "audio": "/audio/question-practice/te-gusta-pescar-1.mp3"
+      },
+      {
+        "es": "¿Te gusta trabajar?",
+        "exampleAnswers": [
+          "No, no me gusta trabajar."
+        ],
+        "audio": "/audio/question-practice/te-gusta-trabajar-1.mp3"
+      },
+      {
+        "es": "¿Te gusta viajar?",
+        "exampleAnswers": [
+          "Sí, me gusta viajar."
+        ],
+        "audio": "/audio/question-practice/te-gusta-viajar-1.mp3"
+      },
+      {
+        "es": "¿Te gusta viajar?",
+        "exampleAnswers": [
+          "Sí, me gusta viajar."
+        ],
+        "audio": "/audio/question-practice/te-gusta-viajar-2.mp3"
+      },
+      {
+        "es": "¿Te gustan las tapas?",
+        "exampleAnswers": [
+          "Sí, me gustan las tapas."
+        ],
+        "audio": "/audio/question-practice/te-gustan-las-tapas-1.mp3"
+      },
+      {
+        "es": "¿Te gustan los hoteles en la playa?",
+        "exampleAnswers": [
+          "Sí, me gustan los hoteles en la playa."
+        ],
+        "audio": "/audio/question-practice/te-gustan-los-hoteles-en-la-playa-1.mp3"
+      },
+      {
+        "es": "¿Te gustan los museos?",
+        "exampleAnswers": [
+          "Sí, me gustan los museos."
+        ],
+        "audio": "/audio/question-practice/te-gustan-los-museos-1.mp3"
+      },
+      {
+        "es": "¿Trabajas mucho?",
+        "exampleAnswers": [
+          "Sí, trabajo mucho."
+        ],
+        "audio": "/audio/question-practice/trabajas-mucho-1.mp3"
+      },
+      {
+        "es": "¿Trabajas o estudias?",
+        "exampleAnswers": [
+          "Trabajo."
+        ],
+        "audio": "/audio/question-practice/trabajas-o-estudias-1.mp3"
+      },
+      {
+        "es": "¿Vamos a la playa?",
+        "exampleAnswers": [
+          "¡Vale! Vamos a la playa."
+        ],
+        "audio": "/audio/question-practice/vamos-a-la-playa-1.mp3"
+      },
+      {
+        "es": "¿Vamos a un museo?",
+        "exampleAnswers": [
+          "¡Vale! Vamos a un museo."
+        ],
+        "audio": "/audio/question-practice/vamos-a-un-museo-1.mp3"
+      },
+      {
+        "es": "¿Vamos a un restaurante de tapas?",
+        "exampleAnswers": [
+          "¡Vale! Vamos a un restaurante de tapas."
+        ],
+        "audio": "/audio/question-practice/vamos-a-un-restaurante-de-tapas-1.mp3"
+      },
+      {
+        "es": "¿Viajas a España?",
+        "exampleAnswers": [
+          "Sí, viajo a España."
+        ],
+        "audio": "/audio/question-practice/viajas-a-espana-1.mp3"
+      },
+      {
+        "es": "¿Viajas mucho?",
+        "exampleAnswers": [
+          "Sí, viajo mucho."
+        ],
+        "audio": "/audio/question-practice/viajas-mucho-1.mp3"
+      }
+    ]
   }
 }
