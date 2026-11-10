@@ -7,7 +7,7 @@
   { "id": "class-06", "number": 6, "title": "¿Dónde está?", "theme": "Opening hours, asking where a place is, simple directions, and the bus: a las…, sigue recto, gira a la derecha/izquierda, numbers in real addresses", "available": true },
   { "id": "listening-revision", "number": null, "title": "Listening Revision (1-6)", "theme": "Pure listening practice revising Classes 1-6: recognize words and phrases by ear, then listen to a question and pick the right response.", "available": true },
   { "id": "class-07", "number": 7, "title": "¿Te gusta?", "theme": "Colours and gender agreement, saying what you like with me gusta/me gustan, and making plans with vamos", "available": true },
-  { "id": "class-08", "number": 8, "title": "Coming soon", "theme": "", "available": false },
+  { "id": "class-08", "number": 8, "title": "¿Hablas inglés?", "theme": "Buying clothes and sizes, your first -ar verb conjugations (yo/tú), and mucho vs poco", "available": true },
   { "id": "class-09", "number": 9, "title": "Coming soon", "theme": "", "available": false },
   { "id": "class-10", "number": 10, "title": "Coming soon", "theme": "", "available": false },
   { "id": "class-11", "number": 11, "title": "Coming soon", "theme": "", "available": false },
