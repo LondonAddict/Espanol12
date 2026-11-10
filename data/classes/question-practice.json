@@ -1,0 +1,10 @@
+{
+  "id": "question-practice",
+  "number": null,
+  "title": "Question Practice (Extra)",
+  "theme": "No class next week - practice here instead: listen to a question, think of your own answer, then reveal the text and/or an example answer as hints if you need them.",
+  "listeningAnswer": {
+    "instructions": "Press Play to hear a question in Spanish. Try to answer it yourself first (out loud is best!) - then reveal the question text and/or an example answer separately, whichever hint you need.",
+    "items": []
+  }
+}

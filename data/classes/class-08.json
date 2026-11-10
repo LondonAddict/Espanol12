@@ -129,10 +129,13 @@
       "title": "¿Te gusta o lo haces mucho?",
       "turns": [
         { "speaker": "Amigo 1", "role": "customer", "es": "¿Te gusta viajar?" },
-        { "speaker": "Amigo 2", "role": "staff", "es": "Sí, me gusta viajar. ¿Viajas mucho?" },
-        { "speaker": "Amigo 1", "role": "customer", "es": "No, viajo poco. ¿Te gusta caminar?" },
-        { "speaker": "Amigo 2", "role": "staff", "es": "Sí, me gusta caminar. ¿Caminas mucho?" },
-        { "speaker": "Amigo 1", "role": "customer", "es": "Sí, camino mucho." }
+        { "speaker": "Amigo 2", "role": "staff", "es": "Sí, me gusta viajar." },
+        { "speaker": "Amigo 1", "role": "customer", "es": "¿Viajas mucho?" },
+        { "speaker": "Amigo 2", "role": "staff", "es": "No, viajo poco." },
+        { "speaker": "Amigo 1", "role": "customer", "es": "¿Te gusta caminar?" },
+        { "speaker": "Amigo 2", "role": "staff", "es": "Sí, me gusta caminar." },
+        { "speaker": "Amigo 1", "role": "customer", "es": "¿Caminas mucho?" },
+        { "speaker": "Amigo 2", "role": "staff", "es": "Sí, camino mucho." }
       ]
     }
   ],
