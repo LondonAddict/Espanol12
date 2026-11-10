@@ -9,11 +9,14 @@
  * versa. No scoring, pure practice. Items with a real recording are
  * shuffled and played first, then TTS-only items (shuffled among
  * themselves) fill out the rest - see shuffleRealAudioFirst() in
- * drill-helpers.js. The numbered row lets a student jump straight to a
- * specific item instead of only moving via Next.
+ * drill-helpers.js. Set exerciseData.shuffle to false to keep the given
+ * item order instead (e.g. to ramp up from shorter to longer questions).
+ * The numbered row lets a student jump straight to a specific item
+ * instead of only moving via Next.
  */
 function mountListeningAnswer(container, exerciseData) {
-  const items = shuffleRealAudioFirst((exerciseData && exerciseData.items) || []);
+  const rawItems = (exerciseData && exerciseData.items) || [];
+  const items = exerciseData && exerciseData.shuffle === false ? rawItems : shuffleRealAudioFirst(rawItems);
   if (!items.length) {
     container.innerHTML = '<p>No listening items available yet.</p>';
     return;
